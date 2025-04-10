@@ -276,6 +276,7 @@ export async function getAllPlayers()
         const response = await fetch(apiUrl+"/api/player/get", {
             method: 'GET',
             headers: {
+                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json'
             }
         });

@@ -5,6 +5,7 @@ export async function getAllRaids() {
         const response = await fetch(apiUrl+"/api/raid/get", {
             method: 'GET',
             headers: {
+              'Access-Control-Allow-Origin': '*',
               'Content-Type': 'application/json'
             }
         });

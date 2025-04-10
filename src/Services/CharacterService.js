@@ -7,6 +7,7 @@ export async function getAllCharacters() {
         const response = await fetch(apiUrl+"/api/character/get", {
             method: 'GET',
             headers: {
+                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json'
             }
         });
@@ -30,6 +31,7 @@ async function getCharactersForPlayerId(id) {
         const response = await fetch(apiUrl+"/api/character/get/forplayer/" + id, {
             method: 'GET',
             headers: {
+                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json'
             }
         });

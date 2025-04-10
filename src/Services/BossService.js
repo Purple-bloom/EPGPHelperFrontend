@@ -5,7 +5,8 @@ export async function getBossesForRaid(raidId){
         const response = await fetch(apiUrl+"/api/boss/get/forRaid/" + raidId, {
             method: 'GET',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin:': '*'
             }
         });
 
@@ -27,6 +28,7 @@ export async function getAllBosses() {
         const response = await fetch(apiUrl+"/api/boss/get", {
             method: 'GET',
             headers: {
+              'Access-Control-Allow-Origin': '*',
               'Content-Type': 'application/json'
             }
         });

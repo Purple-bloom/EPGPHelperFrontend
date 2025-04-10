@@ -5,6 +5,7 @@ export async function getItemsForBoss(bossId){
         const response = await fetch(apiUrl+"/api/item/get/forBoss/"+bossId, {
             method: 'GET',
             headers: {
+              'Access-Control-Allow-Origin': '*',
               'Content-Type': 'application/json'
             }
         });
