@@ -28,13 +28,7 @@ return (
                             <Link className="nav-link" to="/ep">EP</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/items">(OLD) Items</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/softreserves">(OLD) SR+</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/raidruns">(OLD) Raidruns</Link>
+                            <Link className="nav-link" to="/log">Logs</Link>
                         </li>
                     </ul>
                 </div>

@@ -8,12 +8,10 @@ import Navigation from "./Components/Layout/Navigation";
 import Home from "./Components/Home"
 import Players from "./Components/PlayerManager"
 import Characters from "./Components/CharacterManager"
-import SoftReserves from "./Components/SrManager"
-import Items from "./Components/ItemManager"
-import Raidruns from "./Components/RaidrunManager"
 import Ep from "./Components/EpManager"
 import Gp from "./Components/GpManager"
 import Raidrewards from "./Components/RaidrewardManager"
+import Logs from "./Components/LogViewer"
 
 function App() {
     return (
@@ -24,12 +22,10 @@ function App() {
                         <Route path="/" element={ < Home / > } />
                         <Route path="/players" element={ < Players / > } />
                         <Route path="/characters" element={ < Characters / > } />
-                        <Route path="/items" element={ < Items / > } />
-                        <Route path="/softreserves" element={ < SoftReserves / > } />
-                        <Route path="/raidruns" element={ < Raidruns / > } />
                         <Route path="/raidrewards" element={ < Raidrewards / > } />
                         <Route path="/gp" element={ < Gp / > } />
                         <Route path="/ep" element={ < Ep / > } />
+                        <Route path="/log" element={ < Logs / > } />
                     </Routes>
                 </BrowserRouter>
             </div>
