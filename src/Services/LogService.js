@@ -16,6 +16,7 @@ async function getAllLogs() {
         }
 
         const data = await response.json();
+        data.sort((a, b) => a.time < b.time)
         return data; // Return the parsed JSON data directly
      } catch (error) {
     console.error('Error fetching logs:', error);
