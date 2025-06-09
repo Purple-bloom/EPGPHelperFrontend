@@ -10,6 +10,7 @@ export function ListAllPlayers(context) {
         const fetchPlayers = async () => {
             try {
                 const data = await getAllPlayers();
+                data.sort((a, b) => a.prio > b.prio);
                 setPlayers(data);
             } catch (error) {
                 console.error('Error fetching players:', error);
