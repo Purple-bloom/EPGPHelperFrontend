@@ -86,7 +86,7 @@ export function PartitionPlayerRewardsForm(context){
         console.log(characters);
         console.log(partitions);
         let charMap = new Map();
-        if(partitions == null || partitions <= 0 || partitions > 10){
+        if(partitions == null || partitions <= 0 || partitions > 20){
             alert("Nah not doing that - invalid value for partition amount (MIN: 1, MAX: 10)");
             return;
         }

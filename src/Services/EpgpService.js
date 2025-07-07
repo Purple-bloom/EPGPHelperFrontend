@@ -131,9 +131,9 @@ export function GpAwardForm(context){
                                                     ))}
                         </select>
                         <select name="GpValueInput" className="textMedium my-auto">
-                            <option value="5">Min</option>
-                            <option value="15">Medium</option>
-                            <option value="45">Max</option>
+                            <option value="5">5</option>
+                            <option value="15">15</option>
+                            <option value="45">45</option>
                         </select>
                         <button type ="submit" className = "btn btn-primary my-auto">Submit</button>
                     </div>
