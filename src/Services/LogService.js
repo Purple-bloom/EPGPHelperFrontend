@@ -51,9 +51,18 @@ async function getRecentLogs() {
 
 export function ListAllLogs(context) {
     const [logs, setLogs] = useState([]);
-    getAllLogs().then((logArray) => {
-            setLogs(logArray);
-        });
+    
+    useEffect(() => {
+        const fetchLogs = async () => {
+            try {
+                const data = await getAllLogs();
+                setLogs(data);
+            } catch (error) {
+                console.error('Error fetching players:', error);
+            }
+        };
+        fetchLogs();
+    }, []);
     return (
             <div className="border border-secondary border-2 rounded p-2">
                 <table className = "table table-dark">
@@ -80,9 +89,17 @@ export function ListAllLogs(context) {
 
 export function ListRecentLogs(context) {
     const [logs, setLogs] = useState([]);
-    getRecentLogs().then((logArray) => {
-            setLogs(logArray);
-        });
+    useEffect(() => {
+        const fetchLogs = async () => {
+            try {
+                const data = await getRecentLogs();
+                setLogs(data);
+            } catch (error) {
+                console.error('Error fetching players:', error);
+            }
+        };
+        fetchLogs();
+    }, []);
     return (
             <div className="border border-secondary border-2 rounded p-2">
                 <table className = "table table-dark">
