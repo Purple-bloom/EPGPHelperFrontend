@@ -12,6 +12,7 @@ import Ep from "./Components/EpManager"
 import Gp from "./Components/GpManager"
 import Raidrewards from "./Components/RaidrewardManager"
 import Logs from "./Components/LogViewer"
+import RecentLogs from "./Components/RecentLogViewer"
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                         <Route path="/gp" element={ < Gp / > } />
                         <Route path="/ep" element={ < Ep / > } />
                         <Route path="/log" element={ < Logs / > } />
+                        <Route path="/recentlogs" element={ < RecentLogs / > } />
                     </Routes>
                 </BrowserRouter>
             </div>

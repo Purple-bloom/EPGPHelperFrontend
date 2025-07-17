@@ -28,6 +28,9 @@ return (
                             <Link className="nav-link" to="/ep">EP</Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link" to="/recentlogs">Recent Logs</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link" to="/log">Logs</Link>
                         </li>
                     </ul>
