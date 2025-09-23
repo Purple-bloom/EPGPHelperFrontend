@@ -1,4 +1,3 @@
-import {apiUrl} from "../config";
 import { useEffect, useState } from "react"
 import { getAllRaids } from "../Services/RaidService.js"
 import { getBossesForRaid } from "../Services/BossService.js"
@@ -7,7 +6,7 @@ import { getAllCharacters } from "../Services/CharacterService.js"
 
 export async function getAllSoftreserves() {
     try {
-        const response = await fetch(apiUrl+"/api/softreserve/get/dto", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/softreserve/get/dto", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -29,7 +28,7 @@ export async function getAllSoftreserves() {
 
 export async function getSoftReservesForBoss(bossId) {
     try {
-        const response = await fetch(apiUrl+"/api/softreserve/get/dto/forBoss/" + bossId, {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/softreserve/get/dto/forBoss/" + bossId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -50,7 +49,7 @@ export async function getSoftReservesForBoss(bossId) {
 
 export async function getSoftReservesForRaid(raidId) {
     try {
-        const response = await fetch(apiUrl+"/api/softreserve/get/dto/forRaid/" + raidId, {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/softreserve/get/dto/forRaid/" + raidId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -72,7 +71,7 @@ export async function getSoftReservesForRaid(raidId) {
 
 export async function getSoftReservesForCharacter(playerId) {
     try {
-        const response = await fetch(apiUrl+"/api/softreserve/get/forCharacter/" + playerId, {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/softreserve/get/forCharacter/" + playerId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -93,7 +92,7 @@ export async function getSoftReservesForCharacter(playerId) {
 
 export async function getSoftReservesForCharacterDto(playerId) {
     try {
-        const response = await fetch(apiUrl+"/api/softreserve/get/dto/forCharacter/" + playerId, {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/softreserve/get/dto/forCharacter/" + playerId, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -195,7 +194,7 @@ export function ListAllSrs(context) {
     }
 
     function increaseSrBonus(id) {
-        fetch(apiUrl+"/api/softreserve/increment/" + id, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/softreserve/increment/" + id, {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -212,7 +211,7 @@ export function ListAllSrs(context) {
     }
 
     function decreaseSrBonus(id) {
-        fetch(apiUrl+"/api/softreserve/decrease/" + id, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/softreserve/decrease/" + id, {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -414,7 +413,7 @@ export function CreateSrForm(context) {
             "lastupdated": Date.now()
         }
         console.log(softreserve);
-        fetch(apiUrl+"/api/softreserve/create", {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/softreserve/create", {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -507,7 +506,7 @@ export function DeleteSrForm(context) {
         event.preventDefault();
         const sr = JSON.parse(event.target.srInput.value);
         console.log(sr);
-        fetch(apiUrl+"/api/softreserve/delete", {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/softreserve/delete", {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -569,7 +568,7 @@ export function ViewSrsPerCharacter(context) {
     }
     
     function increaseSrBonus(id) {
-        fetch(apiUrl+"/api/softreserve/increment/" + id, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/softreserve/increment/" + id, {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -586,7 +585,7 @@ export function ViewSrsPerCharacter(context) {
     }
 
     function decreaseSrBonus(id) {
-        fetch(apiUrl+"/api/softreserve/decrease/" + id, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/softreserve/decrease/" + id, {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -625,7 +624,7 @@ export function ViewSrsPerCharacter(context) {
         event.preventDefault();
         const sr = JSON.parse(event.target.srInput.value);
         console.log(sr);
-        fetch(apiUrl+"/api/softreserve/delete", {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/softreserve/delete", {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',

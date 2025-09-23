@@ -1,4 +1,3 @@
-import {apiUrl} from "../config";
 import { useEffect, useState } from "react"
 import {getAllRaidrewards} from "../Services/RaidrewardService.js";
 import {getAllCharacters} from "../Services/CharacterService.js";
@@ -41,7 +40,7 @@ export function RewardPlayersForm(context){
             playerNames[counter] = characterNames;
             counter++;
         }
-        fetch(apiUrl+"/api/player/rewardMultiple/" + selectedRaidReward.id, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/rewardMultiple/" + selectedRaidReward.id, {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -102,7 +101,7 @@ export function GpAwardForm(context){
         event.preventDefault();
         console.log(selectedCharacter.id);
         console.log(event.target.GpValueInput.value);
-        fetch(apiUrl+"/api/player/awardGp/" + selectedCharacter.id, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/awardGp/" + selectedCharacter.id, {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -152,7 +151,7 @@ export function PartitionPlayerRewardsForm(context){
         if( window.confirm("Are you sure you want to apply the weekly decay?") === false ){
             return;
         }
-        fetch(apiUrl+"/api/player/applyWeeklyDecay", {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/applyWeeklyDecay", {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -179,7 +178,7 @@ export function ApplyWeeklyDecayForm(context){
         if( window.confirm("Are you sure you want to apply the weekly decay?") === false ){
             return;
         }
-        fetch(apiUrl+"/api/player/applyWeeklyDecay", {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/applyWeeklyDecay", {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',

@@ -1,4 +1,3 @@
-import {apiUrl} from "../config";
 import { useEffect, useState } from "react"
 import {getAllRaidrewards} from "../Services/RaidrewardService.js";
 import {getAllCharacters} from "../Services/CharacterService.js";
@@ -41,7 +40,7 @@ export function RewardPlayersForm(context){
             playerNames[counter] = characterNames;
             counter++;
         }
-        fetch(apiUrl+"/api/player/rewardMultiple/" + selectedRaidReward.id, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/rewardMultiple/" + selectedRaidReward.id, {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',

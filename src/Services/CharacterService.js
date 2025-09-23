@@ -1,10 +1,9 @@
-import {apiUrl} from "../config";
 import {getAllPlayers} from './PlayerService.js'
 import { useEffect, useState } from "react"
 
 export async function getAllCharacters() {
     try {
-        const response = await fetch(apiUrl+"/api/character/get", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/character/get", {
             method: 'GET',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -28,7 +27,7 @@ export async function getAllCharacters() {
 
 async function getCharactersForPlayerId(id) {
     try {
-        const response = await fetch(apiUrl+"/api/character/get/forplayer/" + id, {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/character/get/forplayer/" + id, {
             method: 'GET',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -180,7 +179,7 @@ export function AddCharacterForm(context) {
         const bodyString = JSON.stringify(character)
         console.log("bodyString: " + bodyString);
 
-        fetch(apiUrl+"/api/character/create", {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/character/create", {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -336,7 +335,7 @@ export function EditCharacterForm(context) {
         const bodyString = JSON.stringify(character);
         console.log("bodyString: " + bodyString);
 
-        fetch(apiUrl+"/api/character/update", {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/character/update", {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -443,7 +442,7 @@ export function DeleteCharacterForm(context) {
         event.preventDefault();
         console.log(event);
         
-        fetch(apiUrl+"/api/character/delete/" + character.id, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/character/delete/" + character.id, {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*'

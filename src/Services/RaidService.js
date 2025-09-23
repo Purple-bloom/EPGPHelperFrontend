@@ -1,8 +1,6 @@
-import {apiUrl} from "../config";
-
 export async function getAllRaids() {
     try {
-        const response = await fetch(apiUrl+"/api/raid/get", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/raid/get", {
             method: 'GET',
             headers: {
               'Access-Control-Allow-Origin': '*',

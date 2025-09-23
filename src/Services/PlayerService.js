@@ -1,4 +1,3 @@
-import {apiUrl} from "../config";
 import { useEffect, useState } from "react"
 import { getAllCharacters } from "../Services/CharacterService.js"
 
@@ -69,7 +68,7 @@ export function GetPlayerForIdForm(context) {
     function searchForPlayer(formdata) {
         const id = formdata.get("playerIdInput");
         console.log(id);
-        fetch(apiUrl+"/api/player/get/" + id, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/get/" + id, {
             method: 'GET',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -96,7 +95,7 @@ export function GetPlayerForNameForm(context) {
     function searchForPlayer(formdata) {
         const name = formdata.get("playerNameInput");
         console.log(name);
-        fetch(apiUrl+"/api/player/get/name/" + name, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/get/name/" + name, {
             method: 'GET',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -129,7 +128,7 @@ export function AddPlayerForm(context) {
         console.log(player);
         console.log(JSON.stringify(player));
 
-        fetch(apiUrl+"/api/player/create", {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/create", {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -184,7 +183,7 @@ export function EditPlayerForm(context) {
         console.log(player)
         console.log(JSON.stringify(player))
 
-        fetch(apiUrl+"/api/player/update", {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/update", {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -272,7 +271,7 @@ export function EditPlayerForm(context) {
 export async function getAllPlayers()
 {
     try {
-        const response = await fetch(apiUrl+"/api/player/get", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/get", {
             method: 'GET',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -305,7 +304,7 @@ export function DeletePlayerForm(context) {
         }
         console.log(player);
 
-        fetch(apiUrl+"/api/player/delete/"+player.id, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/delete/"+player.id, {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*'

@@ -1,4 +1,3 @@
-import { apiUrl } from "../config";
 import { useEffect, useState } from "react"
 
 
@@ -23,7 +22,7 @@ export function SettingsInterface(){
             }
             console.log(setting)
 
-            fetch(apiUrl+"/api/player/changeSetting", {
+            fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/changeSetting", {
                 method: 'POST',
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -57,7 +56,7 @@ export function SettingsInterface(){
 export async function getAllSettings()
 {
     try {
-        const response = await fetch(apiUrl+"/api/settings/get", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/settings/get", {
             method: 'GET',
             headers: {
                 'Access-Control-Allow-Origin': '*',

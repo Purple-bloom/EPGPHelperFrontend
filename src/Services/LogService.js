@@ -1,9 +1,8 @@
-import {apiUrl} from "../config";
 import { useEffect, useState } from "react"
 
 async function getAllLogs() {
     try {
-        const response = await fetch(apiUrl+"/api/log/getAll", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/log/getAll", {
             method: 'GET',
             headers: {
               'Access-Control-Allow-Origin': '*',
@@ -27,7 +26,7 @@ async function getAllLogs() {
 
 async function getRecentLogs() {
     try {
-        const response = await fetch(apiUrl+"/api/log/getRecent", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/log/getRecent", {
             method: 'GET',
             headers: {
               'Access-Control-Allow-Origin': '*',

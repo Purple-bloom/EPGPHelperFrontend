@@ -1,4 +1,3 @@
-import {apiUrl} from "../config";
 import { useEffect, useState } from "react"
 import { getAllRaids } from "../Services/RaidService.js"
 
@@ -84,7 +83,7 @@ export function CreateRaidrewardForm(context) {
             "rewardValue": formdata.get("rewardValueInput")
         }
         console.log(raidreward);
-        fetch(apiUrl+"/api/raidreward/create", {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/raidreward/create", {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -156,7 +155,7 @@ export function UpdateRaidrewardForm(context) {
             "rewardValue": formdata.get("rewardValueInput")
         }
         console.log(raidreward);
-        fetch(apiUrl+"/api/raidreward/update", {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/raidreward/update", {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -224,7 +223,7 @@ export function DeleteRaidrewardForm(context) {
         if( window.confirm("Are you sure you want to delete the raidreward " + selectedRaidreward.raid.name + " - " + selectedRaidreward.rewardType + ": " + selectedRaidreward.rewardValue + "?") === false ){
             return;
         }
-        fetch(apiUrl+"/api/raidreward/delete", {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/raidreward/delete", {
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -258,7 +257,7 @@ export function DeleteRaidrewardForm(context) {
 export async function getAllRaidrewards()
 {
     try {
-        const response = await fetch(apiUrl+"/api/raidreward/get", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/raidreward/get", {
             method: 'GET',
             headers: {
                 'Access-Control-Allow-Origin': '*',
