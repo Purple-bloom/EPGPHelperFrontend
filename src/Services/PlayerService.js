@@ -2,8 +2,6 @@ import {apiUrl} from "../config";
 import { useEffect, useState } from "react"
 import { getAllCharacters } from "../Services/CharacterService.js"
 
-
-
 export function ListAllPlayers(context) {
     const [players, setPlayers] = useState([]);
     useEffect(() => {
@@ -291,7 +289,7 @@ export async function getAllPlayers()
         return data; // Return the parsed JSON data directly
     } catch (error) {
         console.error('Error fetching players:', error);
-        alert('Error fetching players:', error);
+        alert('Error fetching players:' + error);
         return null; // Or return an empty array or a default value
     }
 }

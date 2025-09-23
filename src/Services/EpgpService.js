@@ -110,7 +110,11 @@ export function GpAwardForm(context){
             },
             body: event.target.GpValueInput.value
         })
-                .then(response => response.text().then(data => alert(JSON.stringify(data))));
+                .then(response => response.text().then(data => {
+                    alert(JSON.stringify(data));
+                    window.location.reload();
+
+                }));
     }
     
     function updateCharacterSelection(event){
@@ -131,9 +135,9 @@ export function GpAwardForm(context){
                                                     ))}
                         </select>
                         <select name="GpValueInput" className="textMedium my-auto">
-                            <option value="5">5</option>
-                            <option value="15">15</option>
-                            <option value="45">45</option>
+                            <option value="1">LOW</option>
+                            <option value="2">MID</option>
+                            <option value="3">HIGH</option>
                         </select>
                         <button type ="submit" className = "btn btn-primary my-auto">Submit</button>
                     </div>

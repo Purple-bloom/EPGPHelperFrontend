@@ -6,5 +6,4 @@ to configure your backend create file src/config.js and make it look like this:
 export var apiUrl = "yourURLHere:Port";  
 
 
-configure port in package.json --> "start": "PORT=11245 react-scripts start",
-
+start with npm start --port 1234 (change to your port) :)
