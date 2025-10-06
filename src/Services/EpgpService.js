@@ -141,6 +141,8 @@ export function GpAwardForm(context){
                                 <option value="2">MID</option>
                                 <option value="3">HIGH</option>
                             </select>
+                        </div>
+                        <div className="row">
                             <button type ="submit" className = "btn btn-primary my-auto">Submit</button>
                         </div>
                     </div>
