@@ -134,15 +134,11 @@ export function GpAwardForm(context){
                                             <option key={character.id} value={JSON.stringify(character)}>{character.name}</option>
                                                         ))}
                             </select>
-                        </div>
-                        <div className="container">
                             <select name="GpValueInput" className="textMedium my-auto">
                                 <option value="1">LOW</option>
                                 <option value="2">MID</option>
                                 <option value="3">HIGH</option>
                             </select>
-                        </div>
-                        <div className="container">
                             <button type ="submit" className = "btn btn-primary my-auto">Submit</button>
                         </div>
                     </div>
