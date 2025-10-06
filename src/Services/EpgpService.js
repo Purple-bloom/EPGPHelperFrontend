@@ -126,8 +126,8 @@ export function GpAwardForm(context){
             <div className="border border-secondary border-2 rounded p-2">
                 <h2>Award GP for character:</h2>
                 <form onSubmit={awardGp}>
-                    <div className="container form-group d-flex align-items-center justify-content-center">
-                        <div className="row">
+                    <div className="form-group d-flex align-items-center justify-content-center">
+                        <div className="container">
                             <p className="textSmall my-auto">Character:</p>
                             <select name="characterInput" className="textMedium my-auto" onChange = {updateCharacterSelection}>
                                 {characters.map(character => (
@@ -135,14 +135,14 @@ export function GpAwardForm(context){
                                                         ))}
                             </select>
                         </div>
-                        <div className="row">
+                        <div className="container">
                             <select name="GpValueInput" className="textMedium my-auto">
                                 <option value="1">LOW</option>
                                 <option value="2">MID</option>
                                 <option value="3">HIGH</option>
                             </select>
                         </div>
-                        <div className="row">
+                        <div className="container">
                             <button type ="submit" className = "btn btn-primary my-auto">Submit</button>
                         </div>
                     </div>
