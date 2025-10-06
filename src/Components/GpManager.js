@@ -8,10 +8,10 @@ export default function Gp() {
                 <h1>GP</h1>
                 <ApplyWeeklyDecayForm />
                 <div className="row">
-                    <div className = "col-8">
+                    <div className = "col-7">
                         <ListAllPlayers />
                     </div>
-                    <div className = "col-4">
+                    <div className = "col-5">
                         <GpAwardForm />
                     </div>
                 </div>
