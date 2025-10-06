@@ -57,7 +57,7 @@ export function ListAllPlayers(context) {
                                                     <td>{player.ep}</td>
                                                     <td>{player.gp}</td>
                                                     <td>{player.prio}</td>
-                                                    <td class=".text-primary">{player.active.toString()}</td>
+                                                    <td className=".text-primary">{player.active.toString()}</td>
                                                 </tr>
                                                         ))
                                             )}
