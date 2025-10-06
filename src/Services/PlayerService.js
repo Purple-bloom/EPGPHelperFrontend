@@ -29,6 +29,9 @@ export function ListAllPlayers(context) {
                                 Player
                             </th>
                             <th>
+                                Characters
+                            </th>
+                            <th>
                                 Rank
                             </th>
                             <th>
@@ -49,10 +52,11 @@ export function ListAllPlayers(context) {
                                                 <tr key = {player.id}>
                                                     <td>{player.id}</td>
                                                     <td>{player.name}</td>
+                                                    <td>{player.characters}</td>
                                                     <td>{player.rank}</td>
                                                     <td>{player.ep}</td>
                                                     <td>{player.gp}</td>
-                                                    <td>{player.prio}</td>
+                                                    <td class="font-weight-bold">{player.prio}</td>
                                                     <td>{player.active.toString()}</td>
                                                 </tr>
                                                         ))
