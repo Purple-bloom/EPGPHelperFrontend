@@ -52,11 +52,11 @@ export function ListAllPlayers(context) {
                                                 <tr key = {player.id}>
                                                     <td>{player.id}</td>
                                                     <td>{player.name}</td>
-                                                    <td>{player.characters}</td>
+                                                    <td>{player.characters.join(' ')}</td>
                                                     <td>{player.rank}</td>
                                                     <td>{player.ep}</td>
                                                     <td>{player.gp}</td>
-                                                    <td class="font-weight-bold">{player.prio}</td>
+                                                    <td><p class="font-weight-bold">{player.prio}</p></td>
                                                     <td>{player.active.toString()}</td>
                                                 </tr>
                                                         ))
