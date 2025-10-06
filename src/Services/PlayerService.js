@@ -56,8 +56,8 @@ export function ListAllPlayers(context) {
                                                     <td>{player.rank}</td>
                                                     <td>{player.ep}</td>
                                                     <td>{player.gp}</td>
-                                                    <td><p class="font-weight-bold">{player.prio}</p></td>
-                                                    <td>{player.active.toString()}</td>
+                                                    <td>{player.prio}</td>
+                                                    <td class=".text-primary">{player.active.toString()}</td>
                                                 </tr>
                                                         ))
                                             )}
