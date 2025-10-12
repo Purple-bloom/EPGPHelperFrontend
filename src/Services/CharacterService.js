@@ -221,7 +221,7 @@ export function AddCharacterForm(context) {
                 <div className = "d-flex align-items-center justify-content-center">
                     <select name = "characterClassificationInput" className="textMedium"> 
                         <option name="main" value="main">Main</option>
-                        <option name="twink" value="twink">Twink</option>
+                        <option name="alt" value="alt">Alt</option>
                     </select>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
@@ -380,7 +380,7 @@ export function EditCharacterForm(context) {
                 <div className = "d-flex align-items-center justify-content-center">
                     <select name = "characterClassificationInput" className="textMedium" value={characterClassification} onChange={(e) => setCharacterClassification(e.target.value)}> 
                         <option name="main" value="main">Main</option>
-                        <option name="twink" value="twink">Twink</option>
+                        <option name="alt" value="alt">Alt</option>
                     </select>
                     <button type="submit" className="btn btn-primary">Update</button>
                 </div>
