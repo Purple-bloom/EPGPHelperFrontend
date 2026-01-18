@@ -22,17 +22,32 @@ export function ListAllPlayers(context) {
         if (players.length === 0) return;
 
         const infoString = players.map(player => {
-            const characterList = player.characters.join(', ');
+            const characterList = player.characters.join(',');
             const formattedPrio = Number(player.prio).toFixed(3);
             return `${characterList}, ${formattedPrio}`;
         }).join(';');
 
         try {
-            await navigator.clipboard.writeText(infoString);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
+            const textArea = document.createElement("textarea");
+            textArea.value = infoString;
+
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            textArea.style.top = "0";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            const successful = document.execCommand('copy');
+            document.body.removeChild(textArea);
+
+            if (successful) {
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+            } else {
+                throw new Error('execCommand returned false');
+            }
         } catch (err) {
-            console.error('Failed to copy text: ', err);
+            alert('Failed to copy text: ' + err);
         }
     };
 
