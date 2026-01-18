@@ -24,7 +24,7 @@ export function ListAllPlayers(context) {
         const infoString = players.map(player => {
             const characterList = player.characters.join(',');
             const formattedPrio = Number(player.prio).toFixed(3);
-            return `${characterList}, ${formattedPrio}`;
+            return `${characterList}:${formattedPrio}`;
         }).join(';');
 
         try {
