@@ -3,6 +3,7 @@ import { getAllCharacters } from "../Services/CharacterService.js"
 
 export function ListAllPlayers(context) {
     const [players, setPlayers] = useState([]);
+
     useEffect(() => {
         const fetchPlayers = async () => {
             try {
@@ -16,55 +17,61 @@ export function ListAllPlayers(context) {
         fetchPlayers();
     }, []);
 
+    const handleShowInfo = () => {
+        if (players.length === 0) return;
+
+        const infoString = players.map(player => {
+            const characterList = player.characters.join(', ');
+            const formattedPrio = Number(player.prio).toFixed(3);
+            return `${characterList}, ${formattedPrio}`;
+        }).join('\n');
+
+        alert(infoString);
+    };
+
     return (
-            <div className="border border-secondary border-2 rounded p-2">
+        <div className="border border-secondary border-2 rounded p-2">
+            <div className="d-flex justify-content-between align-items-center mb-3">
                 <h2>List of all players:</h2>
-                <table className = "table table-dark">
-                    <tbody>
-                        <tr>
-                            <th>
-                                ID
-                            </th>
-                            <th>
-                                Player
-                            </th>
-                            <th>
-                                Characters
-                            </th>
-                            <th>
-                                Rank
-                            </th>
-                            <th>
-                                EP
-                            </th>
-                            <th>
-                                GP
-                            </th>
-                            <th>
-                                Prio
-                            </th>
-                            <th>
-                                Active
-                            </th>
-                        </tr>
-                        {players.length > 0 && (
-                                            players.map((player) => (
-                                                <tr key = {player.id}>
-                                                    <td>{player.id}</td>
-                                                    <td>{player.name}</td>
-                                                    <td>{player.characters.join('\n')}</td>
-                                                    <td>{player.rank}</td>
-                                                    <td>{player.ep}</td>
-                                                    <td>{player.gp}</td>
-                                                    <td className="text-warning">{player.prio}</td>
-                                                    <td>{player.active.toString()}</td>
-                                                </tr>
-                                                        ))
-                                            )}
-                    </tbody>
-                </table>
+                <button
+                    className="btn btn-info text-white"
+                    onClick={handleShowInfo}>
+                    Print full Prio info (addon import)
+                </button>
             </div>
-            );
+
+            <table className="table table-dark">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Player</th>
+                        <th>Characters</th>
+                        <th>Rank</th>
+                        <th>EP</th>
+                        <th>GP</th>
+                        <th>Prio</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {players.length > 0 && (
+                        players.map((player) => (
+                            <tr key={player.id}>
+                                <td>{player.id}</td>
+                                <td>{player.name}</td>
+                                <td style={{ whiteSpace: 'pre-line' }}>{player.characters.join('\n')}</td>
+                                <td>{player.rank}</td>
+                                <td>{player.ep}</td>
+                                <td>{player.gp}</td>
+                                <td className="text-warning">{player.prio}</td>
+                                <td>{player.active.toString()}</td>
+                            </tr>
+                        ))
+                    )}
+                </tbody>
+            </table>
+        </div>
+    );
 }
 
 export function GetPlayerForIdForm(context) {
