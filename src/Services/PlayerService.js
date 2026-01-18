@@ -3,6 +3,7 @@ import { getAllCharacters } from "../Services/CharacterService.js"
 
 export function ListAllPlayers(context) {
     const [players, setPlayers] = useState([]);
+    const [copied, setCopied] = useState(false); // State for button feedback
 
     useEffect(() => {
         const fetchPlayers = async () => {
@@ -17,16 +18,22 @@ export function ListAllPlayers(context) {
         fetchPlayers();
     }, []);
 
-    const handleShowInfo = () => {
+    const handleCopyToClipboard = async () => {
         if (players.length === 0) return;
 
         const infoString = players.map(player => {
             const characterList = player.characters.join(', ');
             const formattedPrio = Number(player.prio).toFixed(3);
             return `${characterList}, ${formattedPrio}`;
-        }).join('\n');
+        }).join(';');
 
-        alert(infoString);
+        try {
+            await navigator.clipboard.writeText(infoString);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy text: ', err);
+        }
     };
 
     return (
@@ -34,9 +41,9 @@ export function ListAllPlayers(context) {
             <div className="d-flex justify-content-between align-items-center mb-3">
                 <h2>List of all players:</h2>
                 <button
-                    className="btn btn-info text-white"
-                    onClick={handleShowInfo}>
-                    Print full Prio info (addon import)
+                    className={`btn ${copied ? 'btn-success' : 'btn-primary'}`}
+                    onClick={handleCopyToClipboard}>
+                    {copied ? 'Copied to Clipboard!' : 'Copy Export Info'}
                 </button>
             </div>
 
