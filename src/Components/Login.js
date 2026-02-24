@@ -4,6 +4,7 @@ import useToken from './useToken';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login({ setToken }) {
+    const navigate = useNavigate();
 
     async function loginUser(credentials) {
         const response = await fetch(process.env.REACT_APP_BACKEND_URL + "/api/auth/login", {
