@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react"
 
 
-export function SettingsInterface(){
+export function SettingsInterface({token}){
     const [settings, setSettings] = useState([]);
     useEffect(() => {
-            const fetchSettings = async () => {
-                try {
-                    const data = await getAllSettings();
-                    setSettings(data);
-                } catch (error) {
-                    console.error('Error fetching Settings: ' + error);
-                }
-            };
-            fetchSettings();
-        }, []);
+        const fetchSettings = async () => {
+            try {
+                const data = await getAllSettings(token);
+                setSettings(data);
+            } catch (error) {
+                console.error('Error fetching Settings: ' + error);
+            }
+        };
+        fetchSettings();
+    }, [token]);
 
     function editSetting(formdata) {
             const setting = {
@@ -25,7 +25,7 @@ export function SettingsInterface(){
             fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/changeSetting", {
                 method: 'POST',
                 headers: {
-                    'Access-Control-Allow-Origin': '*',
+                    'Authorization': token,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(setting)
@@ -53,13 +53,13 @@ export function SettingsInterface(){
             );
 }
 
-export async function getAllSettings()
+export async function getAllSettings(token)
 {
     try {
         const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/settings/get", {
             method: 'GET',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             }
         });

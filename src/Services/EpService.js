@@ -2,15 +2,14 @@ import { useEffect, useState } from "react"
 import {getAllRaidrewards} from "../Services/RaidrewardService.js";
 import {getAllCharacters} from "../Services/CharacterService.js";
 
-export function RewardPlayersForm(context){
+export function RewardPlayersForm({token}){
     const [raidRewards, setRaidRewards] = useState([]);
-    
     const [selectedRaidReward, setSelectedRaidReward] = useState(null);
     
     useEffect(() => {
         const fetchRaidrewards = async () => {
             try {
-                const data = await getAllRaidrewards();
+                const data = await getAllRaidrewards(token);
                 setRaidRewards(data);
                 if(data != null){
                     setSelectedRaidReward(data[0]);
@@ -43,7 +42,7 @@ export function RewardPlayersForm(context){
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/rewardMultiple/" + selectedRaidReward.id, {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(playerNames)
@@ -77,7 +76,7 @@ export function RewardPlayersForm(context){
             );
 }
 
-export function PartitionPlayerRewardsForm(context){
+export function PartitionPlayerRewardsForm(){
     function calculatePartitions(event){
         event.preventDefault();
         let characters = event.target.charactersInput.value.split(String.fromCharCode(10));

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { getAllRaids } from "../Services/RaidService.js"
 
-export function ListAllRaidrewards(context) {
+export function ListAllRaidrewards({token}) {
     const [raidrewards, setRaidrewards] = useState([]);
     useEffect(() => {
         const fetchRaidrewards = async () => {
             try {
-                const data = await getAllRaidrewards();
+                const data = await getAllRaidrewards(token);
                 setRaidrewards(data);
             } catch (error) {
                 console.error('Error fetching Raidrewards:', error);
@@ -50,7 +50,7 @@ export function ListAllRaidrewards(context) {
             );
 }
 
-export function CreateRaidrewardForm(context) {
+export function CreateRaidrewardForm({token}) {
     const [raids, setRaids] = useState([]);
     const [selectedRaid, setSelectedRaid] = useState(null);
     
@@ -86,7 +86,7 @@ export function CreateRaidrewardForm(context) {
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/raidreward/create", {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(raidreward)
@@ -122,14 +122,14 @@ export function CreateRaidrewardForm(context) {
             );
 }
 
-export function UpdateRaidrewardForm(context) {
+export function UpdateRaidrewardForm({token}) {
     const [raidrewards, setRaidrewards] = useState([]);
     const [selectedRaidreward, setSelectedRaidreward] = useState([]);
     
     useEffect(() => {
         const fetchRaidrewards = async () => {
             try {
-                const data = await getAllRaidrewards();
+                const data = await getAllRaidrewards(token);
                 setRaidrewards(data);
                 if(data[0] != null){
                     setSelectedRaidreward(data[0]);
@@ -158,7 +158,8 @@ export function UpdateRaidrewardForm(context) {
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/raidreward/update", {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+'Authorization': token,
+
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(raidreward)
@@ -194,14 +195,14 @@ export function UpdateRaidrewardForm(context) {
             );
 }
 
-export function DeleteRaidrewardForm(context) {
+export function DeleteRaidrewardForm({token}) {
     const [raidrewards, setRaidrewards] = useState([]);
     const [selectedRaidreward, setSelectedRaidreward] = useState([]);
     
     useEffect(() => {
         const fetchRaidrewards = async () => {
             try {
-                const data = await getAllRaidrewards();
+                const data = await getAllRaidrewards(token);
                 setRaidrewards(data);
                 if(data[0] != null){
                     setSelectedRaidreward(data[0]);
@@ -226,7 +227,7 @@ export function DeleteRaidrewardForm(context) {
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/raidreward/delete", {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(selectedRaidreward)
@@ -254,13 +255,13 @@ export function DeleteRaidrewardForm(context) {
             );
 }
 
-export async function getAllRaidrewards()
+export async function getAllRaidrewards(token)
 {
     try {
         const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/raidreward/get", {
             method: 'GET',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             }
         });

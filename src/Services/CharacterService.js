@@ -1,12 +1,14 @@
 import {getAllPlayers} from './PlayerService.js'
 import { useEffect, useState } from "react"
 
-export async function getAllCharacters() {
+export async function getAllCharacters(token) {
+    console.log("getting all characters");
+                console.log(token);
     try {
         const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/character/get", {
             method: 'GET',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             }
         });
@@ -25,12 +27,12 @@ export async function getAllCharacters() {
     }
 }
 
-async function getCharactersForPlayerId(id) {
+async function getCharactersForPlayerId(id, token) {
     try {
         const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/character/get/forplayer/" + id, {
             method: 'GET',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             }
         });
@@ -44,7 +46,7 @@ async function getCharactersForPlayerId(id) {
     }
 }
 
-export function ViewCharactersForPlayer(context) {
+export function ViewCharactersForPlayer({token}) {
     const [players, setPlayers] = useState([]);
     const [characters, setCharacters] = useState([]);
 
@@ -52,7 +54,7 @@ export function ViewCharactersForPlayer(context) {
         event.preventDefault();
         const player = JSON.parse(event.target.value);
         console.log(player);
-        getCharactersForPlayerId(player.id).then(
+        getCharactersForPlayerId(player.id, token).then(
                 (charArray) => {
             console.log(charArray);
             setCharacters(charArray);
@@ -64,7 +66,7 @@ export function ViewCharactersForPlayer(context) {
             try {
                 const data = await getAllPlayers();
                 setPlayers(data);
-                getCharactersForPlayerId(data[0].id).then(
+                getCharactersForPlayerId(data[0].id, token).then(
                         (charArray) => {
                     console.log(charArray);
                     setCharacters(charArray)
@@ -117,16 +119,16 @@ export function ViewCharactersForPlayer(context) {
             );
 }
 
-export function ViewAllCharacters(context) {
+export function ViewAllCharacters({token}) {
     const [characters, setCharacters] = useState([]);
     
     useEffect(() => {
         const fetchPlayers = async () => {
             try {
-                const data = await getAllCharacters();
+                const data = await getAllCharacters(token);
                 setCharacters(data);
             } catch (error) {
-                console.error('Error fetching players:', error);
+                console.error('Error fetching Characters:', error);
             }
         };
         fetchPlayers();
@@ -163,7 +165,7 @@ export function ViewAllCharacters(context) {
             );
 }
 
-export function AddCharacterForm(context) {
+export function AddCharacterForm({token}) {
     function addCharacter(event) {
         event.preventDefault();
         console.log(event);
@@ -182,7 +184,7 @@ export function AddCharacterForm(context) {
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/character/create", {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             },
             body: bodyString
@@ -229,7 +231,7 @@ export function AddCharacterForm(context) {
             );
 }
 
-export function EditCharacterForm(context) {
+export function EditCharacterForm({token}) {
     const [players, setPlayers] = useState([]);
     const [selectedPlayerId, setSelectedPlayerId] = useState(0);
     const [allCharacters, setAllCharacters] = useState([]);
@@ -241,7 +243,7 @@ export function EditCharacterForm(context) {
     useEffect(() => {
         const fetchAllCharacters = async () => {
             try {
-                const data = await getAllCharacters();
+                const data = await getAllCharacters(token);
                 setAllCharacters(data);
             } catch (error) {
                 console.error('Error fetching players:', error);
@@ -257,7 +259,7 @@ export function EditCharacterForm(context) {
         setSelectedPlayerId(playerId);
         console.log(playerId);
         console.log(selectedPlayerId);
-        getCharactersForPlayerId(playerId).then(
+        getCharactersForPlayerId(playerId, token).then(
                 (charArray) => {
             console.log(charArray);
             setCharacters(charArray);
@@ -284,7 +286,7 @@ export function EditCharacterForm(context) {
         setCharacterId(character.id);
         setCharacterName(character.name);
         setCharacterClassification(character.classification);
-        getCharactersForPlayerId(character.player.id).then(
+        getCharactersForPlayerId(character.player.id, token).then(
                 (charArray) => {
             console.log(charArray);
             setCharacters(charArray);
@@ -303,7 +305,7 @@ export function EditCharacterForm(context) {
                 setPlayers(data);
                 if(data != null){
                     setSelectedPlayerId(data[0].id);
-                    getCharactersForPlayerId(data[0].id).then(
+                    getCharactersForPlayerId(data[0].id, token).then(
                             (charArray) => {
                         console.log(charArray);
                         setCharacters(charArray);
@@ -338,7 +340,7 @@ export function EditCharacterForm(context) {
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/character/update", {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             },
             body: bodyString
@@ -389,7 +391,7 @@ export function EditCharacterForm(context) {
 }
 
 
-export function DeleteCharacterForm(context) {
+export function DeleteCharacterForm({token}) {
     const [players, setPlayers] = useState([]);
     const [characters, setCharacters] = useState([]);
     const [character, setCharacter] = useState([]);
@@ -398,7 +400,7 @@ export function DeleteCharacterForm(context) {
         event.preventDefault();
         const player = JSON.parse(event.target.value);
         console.log(player);
-        getCharactersForPlayerId(player.id).then(
+        getCharactersForPlayerId(player.id, token).then(
                 (charArray) => {
             console.log(charArray);
             if(charArray != null){
@@ -423,7 +425,7 @@ export function DeleteCharacterForm(context) {
             try {
                 const data = await getAllPlayers();
                 setPlayers(data);
-                getCharactersForPlayerId(data[0].id).then(
+                getCharactersForPlayerId(data[0].id, token).then(
                         (charArray) => {
                     console.log(charArray);
                     if(charArray != null){
@@ -445,7 +447,7 @@ export function DeleteCharacterForm(context) {
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/character/delete/" + character.id, {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*'
+                'Authorization': token,
             }
         })
                 .then(response => console.log(response));

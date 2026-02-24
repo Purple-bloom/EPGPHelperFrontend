@@ -3,8 +3,7 @@ export async function getAllRaids() {
         const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/raid/get", {
             method: 'GET',
             headers: {
-              'Access-Control-Allow-Origin': '*',
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             }
         });
 
@@ -16,8 +15,8 @@ export async function getAllRaids() {
         data.sort((a, b) => a.name > b.name)
         return data; // Return the parsed JSON data directly
      } catch (error) {
-    console.error('Error fetching players:', error);
-    alert('Error fetching players:', error);
+    console.error('Error fetching raids:', error);
+    alert('Error fetching raids:', error);
     return null; // Or return an empty array or a default value
   }
 }

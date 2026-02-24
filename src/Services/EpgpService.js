@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import {getAllRaidrewards} from "../Services/RaidrewardService.js";
 import {getAllCharacters} from "../Services/CharacterService.js";
 
-export function RewardPlayersForm(context){
+export function RewardPlayersForm({token}){
     const [raidRewards, setRaidRewards] = useState([]);
     
     const [selectedRaidReward, setSelectedRaidReward] = useState(null);
@@ -43,7 +43,7 @@ export function RewardPlayersForm(context){
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/rewardMultiple/" + selectedRaidReward.id, {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(playerNames)
@@ -78,14 +78,14 @@ export function RewardPlayersForm(context){
 }
 
 
-export function GpAwardForm(context){
+export function GpAwardForm({token}){
     const [characters, setCharacters] = useState([]);
     const [selectedCharacter, setSelectedCharacter] = useState(null);
     
     useEffect(() => {
         const fetchCharacters = async () => {
             try {
-                const data = await getAllCharacters();
+                const data = await getAllCharacters(token);
                 setCharacters(data);
                 if(data != null){
                     setSelectedCharacter(data[0]);
@@ -104,7 +104,7 @@ export function GpAwardForm(context){
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/awardGp/" + selectedCharacter.id, {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             },
             body: event.target.GpValueInput.value
@@ -147,7 +147,7 @@ export function GpAwardForm(context){
             );
 }
 
-export function PartitionPlayerRewardsForm(context){
+export function PartitionPlayerRewardsForm({token}){
     function applyWeeklyDecay(event){
         event.preventDefault();
         if( window.confirm("Are you sure you want to apply the weekly decay?") === false ){
@@ -156,7 +156,7 @@ export function PartitionPlayerRewardsForm(context){
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/applyWeeklyDecay", {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             }
         })
@@ -173,7 +173,7 @@ export function PartitionPlayerRewardsForm(context){
             );
 }
 
-export function ApplyWeeklyDecayForm(context){
+export function ApplyWeeklyDecayForm({token}){
     
     function applyWeeklyDecay(event){
         event.preventDefault();
@@ -183,7 +183,7 @@ export function ApplyWeeklyDecayForm(context){
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/applyWeeklyDecay", {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             }
         })

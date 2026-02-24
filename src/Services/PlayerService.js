@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getAllCharacters } from "../Services/CharacterService.js"
 
-export function ListAllPlayers(context) {
+export function ListAllPlayers({token}) {
     const [players, setPlayers] = useState([]);
     const [copied, setCopied] = useState(false); // State for button feedback
 
@@ -96,7 +96,7 @@ export function ListAllPlayers(context) {
     );
 }
 
-export function GetPlayerForIdForm(context) {
+export function GetPlayerForIdForm({token}) {
 
     function searchForPlayer(formdata) {
         const id = formdata.get("playerIdInput");
@@ -104,7 +104,7 @@ export function GetPlayerForIdForm(context) {
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/get/" + id, {
             method: 'GET',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             }
         })
@@ -123,7 +123,7 @@ export function GetPlayerForIdForm(context) {
             );
 }
 
-export function GetPlayerForNameForm(context) {
+export function GetPlayerForNameForm({token}) {
 
     function searchForPlayer(formdata) {
         const name = formdata.get("playerNameInput");
@@ -131,7 +131,7 @@ export function GetPlayerForNameForm(context) {
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/get/name/" + name, {
             method: 'GET',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             }
         })
@@ -151,7 +151,7 @@ export function GetPlayerForNameForm(context) {
 }
 
 
-export function AddPlayerForm(context) {
+export function AddPlayerForm({token}) {
 
     function addPlayer(formdata) {
         const player = {
@@ -164,7 +164,7 @@ export function AddPlayerForm(context) {
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/create", {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(player)
@@ -195,7 +195,7 @@ export function AddPlayerForm(context) {
             );
 }
 
-export function EditPlayerForm(context) {
+export function EditPlayerForm({token}) {
     const [players, setPlayers] = useState([]);
     const [playerId, setPlayerId] = useState(0);
     const [playerName, setPlayerName] = useState('');
@@ -219,7 +219,7 @@ export function EditPlayerForm(context) {
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/update", {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Authorization': token,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(player)
@@ -307,7 +307,6 @@ export async function getAllPlayers()
         const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/get", {
             method: 'GET',
             headers: {
-                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json'
             }
         });
@@ -326,7 +325,7 @@ export async function getAllPlayers()
     }
 }
 
-export function DeletePlayerForm(context) {
+export function DeletePlayerForm({token}) {
     const [players, setPlayers] = useState([]);
     const [player, setPlayer] = useState([]);
 
@@ -340,7 +339,7 @@ export function DeletePlayerForm(context) {
         fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/delete/"+player.id, {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*'
+                'Authorization': token,
             }
         })
                 .then(response => {

@@ -5,7 +5,6 @@ async function getAllLogs() {
         const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/log/getAll", {
             method: 'GET',
             headers: {
-              'Access-Control-Allow-Origin': '*',
               'Content-Type': 'application/json'
             }
         });
@@ -29,7 +28,6 @@ async function getRecentLogs() {
         const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/api/log/getRecent", {
             method: 'GET',
             headers: {
-              'Access-Control-Allow-Origin': '*',
               'Content-Type': 'application/json'
             }
         });
