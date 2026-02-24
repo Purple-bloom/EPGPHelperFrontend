@@ -27,17 +27,19 @@ export default function Login({ setToken }) {
         const username = event.target.username.value;
         const password = event.target.password.value;
 
-        const token = await loginUser([
-              username,
-              password
-        ]);
+        try{
+            const token = await loginUser([
+                  username,
+                  password
+            ]);
 
-        console.log("Login successful.")
-        setToken(token);
-        navigate('/');
-    } catch (error) {
-        console.error("Login failed:", error.message);
-        alert("Login failed: " + error.message);
+            console.log("Login successful.")
+            setToken(token);
+            navigate('/');
+        } catch (error) {
+            console.error("Login failed:", error.message);
+            alert("Login failed: " + error.message);
+        }
     }
 
     return(
