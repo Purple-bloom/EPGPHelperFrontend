@@ -3,7 +3,7 @@ import * as React from 'react';
 import Home from "../Home";
 import { Link } from 'react-router-dom';
 
-export default function Navigation() {
+export default function Navigation({ token }) {
 return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
@@ -12,33 +12,33 @@ return (
                         <li className="nav-item">
                             <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                         </li>
-                        <li className="nav-item">
+                        {token && <li className="nav-item">
                             <Link className="nav-link" to="/players">Players</Link>
-                        </li>
-                        <li className="nav-item">
+                        </li>}
+                        {token && <li className="nav-item">
                             <Link className="nav-link" to="/characters">Characters</Link>
-                        </li>
-                        <li className="nav-item">
+                        </li>}
+                        {token && <li className="nav-item">
                             <Link className="nav-link" to="/raidrewards">Manage Rewards</Link>
-                        </li>
-                        <li className="nav-item">
+                        </li>}
+                        {token && <li className="nav-item">
                             <Link className="nav-link" to="/gp">GP</Link>
-                        </li>
-                        <li className="nav-item">
+                        </li>}
+                        {token && <li className="nav-item">
                             <Link className="nav-link" to="/ep">EP</Link>
-                        </li>
+                        </li>}
                         <li className="nav-item">
                             <Link className="nav-link" to="/recentlogs">Recent Logs</Link>
                         </li>
-                        <li className="nav-item">
+                        {token && <li className="nav-item">
                             <Link className="nav-link" to="/log">Logs</Link>
-                        </li>
-                        <li className="nav-item">
+                        </li>}
+                        {token && <li className="nav-item">
                             <Link className="nav-link" to="/settings">Settings</Link>
-                        </li>
-                        <li className="nav-item">
+                        </li>}
+                        {!token && <li className="nav-item">
                             <Link className="nav-link" to="/login">Login</Link>
-                        </li>
+                        </li>}
                     </ul>
                 </div>
             </div>

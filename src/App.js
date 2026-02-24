@@ -31,7 +31,7 @@ function App() {
     return (
             <div className="App bg-dark text-light">
                 <BrowserRouter>
-                    <Navigation />
+                    <Navigation token={token} />
                     <Routes>
                         <Route path="/" element={ < Home / > } />
                         <Route path="/players" element={

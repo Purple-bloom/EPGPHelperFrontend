@@ -5,14 +5,20 @@ import useToken from './useToken';
 export default function Login({ setToken }) {
 
     async function loginUser(credentials) {
-        return fetch(process.env.REACT_APP_BACKEND_URL+"/api/auth/login", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL + "/api/auth/login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(credentials)
-        })
-        .then(response => response.text())
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText || "Invalid credentials");
+        }
+
+        return response.text();
     }
 
     const handleLogin = async event => {
@@ -26,8 +32,12 @@ export default function Login({ setToken }) {
               password
         ]);
 
-        console.log(token)
+        console.log("Login successful.")
         setToken(token);
+        navigate('/');
+    } catch (error) {
+        console.error("Login failed:", error.message);
+        alert("Login failed: " + error.message);
     }
 
     return(
