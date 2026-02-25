@@ -15,6 +15,7 @@ import Logs from "./Components/LogViewer"
 import RecentLogs from "./Components/RecentLogViewer"
 import Settings from "./Components/SettingManager"
 import Login from "./Components/Login"
+import PublicView from "./Components/PublicView"
 import useToken from './Components/useToken';
 
 function ProtectedRoute({ children, token }) {
@@ -51,6 +52,7 @@ function App() {
                          } />
                         <Route path="/log" element={ < Logs / > } />
                         <Route path="/recentlogs" element={ < RecentLogs / > } />
+                        <Route path="/publicview" element={ < PublicView / > } />
                         <Route path="/settings" element={
                             <ProtectedRoute token={token}> < Settings token={token} / > </ProtectedRoute>
                         } />

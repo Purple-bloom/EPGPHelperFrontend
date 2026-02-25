@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getAllCharacters } from "../Services/CharacterService.js"
 
-export function ListAllPlayers({token}) {
+export function ListAllPlayers() {
     const [players, setPlayers] = useState([]);
     const [copied, setCopied] = useState(false); // State for button feedback
 
