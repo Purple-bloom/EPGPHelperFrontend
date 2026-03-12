@@ -121,7 +121,7 @@ export function GpAwardForm({token}){
         event.preventDefault();
         console.log(selectedCharacterOffspec.id);
         console.log(event.target.GpValueInput.value);
-        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/awardGpHalf/" + selectedCharacterOffspec.id, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/awardGpOffspec/" + selectedCharacterOffspec.id, {
             method: 'POST',
             headers: {
                 'Authorization': token,
