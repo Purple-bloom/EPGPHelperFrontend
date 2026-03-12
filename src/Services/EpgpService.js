@@ -81,6 +81,7 @@ export function RewardPlayersForm({token}){
 export function GpAwardForm({token}){
     const [characters, setCharacters] = useState([]);
     const [selectedCharacter, setSelectedCharacter] = useState(null);
+    const [selectedCharacterOffspec, setSelectedCharacterOffspec] = useState(null);
     
     useEffect(() => {
         const fetchCharacters = async () => {
@@ -115,11 +116,36 @@ export function GpAwardForm({token}){
 
                 }));
     }
+
+    function awardGpOffspec(event){
+        event.preventDefault();
+        console.log(selectedCharacterOffspec.id);
+        console.log(event.target.GpValueInput.value);
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/awardGpHalf/" + selectedCharacterOffspec.id, {
+            method: 'POST',
+            headers: {
+                'Authorization': token,
+                'Content-Type': 'application/json'
+            },
+            body: event.target.GpValueInput.value
+        })
+                .then(response => response.text().then(data => {
+                    alert(JSON.stringify(data));
+                    window.location.reload();
+
+                }));
+    }
     
     function updateCharacterSelection(event){
         const character = JSON.parse(event.target.value);
         console.log(character);
         setSelectedCharacter(character);
+    }
+
+    function updateCharacterSelectionOffspec(event){
+        const character = JSON.parse(event.target.value);
+        console.log(character);
+        setSelectedCharacterOffspec(character);
     }
     
     return (
@@ -130,6 +156,26 @@ export function GpAwardForm({token}){
                         <div className="container">
                             <p className="textSmall my-auto">Character:</p>
                             <select name="characterInput" className="textMedium my-auto" onChange = {updateCharacterSelection}>
+                                {characters.map(character => (
+                                            <option key={character.id} value={JSON.stringify(character)}>{character.name}</option>
+                                                        ))}
+                            </select>
+                            <select name="GpValueInput" className="textMedium my-auto">
+                                <option value="1">LOW</option>
+                                <option value="2">MID</option>
+                                <option value="3">HIGH</option>
+                            </select>
+                            <button type ="submit" className = "btn btn-primary my-auto">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+                <h2>Award Offspec (half) GP for character:</h2>
+                <form onSubmit={awardGpOffspec}>
+                    <div className="form-group d-flex align-items-center justify-content-center">
+                        <div className="container">
+                            <p className="textSmall my-auto">Character:</p>
+                            <select name="characterInput" className="textMedium my-auto" onChange = {updateCharacterSelectionOffspec}>
                                 {characters.map(character => (
                                             <option key={character.id} value={JSON.stringify(character)}>{character.name}</option>
                                                         ))}
