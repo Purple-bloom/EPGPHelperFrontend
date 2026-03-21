@@ -38,42 +38,24 @@ export default function Navigation({ token }) {
 
                 <div className="collapse navbar-collapse" id="navbarNav" ref={navBarRef}>
                     <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/" onClick={closeNavbar}>Home</Link>
-                        </li>
-                        {token && <li className="nav-item">
-                            <Link className="nav-link" to="/players" onClick={closeNavbar}>Players</Link>
-                        </li>}
-                        {token && <li className="nav-item">
-                            <Link className="nav-link" to="/characters" onClick={closeNavbar}>Characters</Link>
-                        </li>}
-                        {token && <li className="nav-item">
-                            <Link className="nav-link" to="/raidrewards" onClick={closeNavbar}>Manage Rewards</Link>
-                        </li>}
-                        {token && <li className="nav-item">
-                            <Link className="nav-link" to="/gp" onClick={closeNavbar}>GP</Link>
-                        </li>}
-                        {token && <li className="nav-item">
-                            <Link className="nav-link" to="/ep" onClick={closeNavbar}>EP</Link>
-                        </li>}
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/recentlogs" onClick={closeNavbar}>Recent Logs</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/PublicView" onClick={closeNavbar}>View Prios</Link>
-                        </li>
-                        {token && <li className="nav-item">
-                            <Link className="nav-link" to="/log" onClick={closeNavbar}>Logs</Link>
-                        </li>}
-                        {token && <li className="nav-item">
-                            <Link className="nav-link" to="/settings" onClick={closeNavbar}>Settings</Link>
-                        </li>}
-                        {!token && <li className="nav-item">
-                            <Link className="nav-link" to="/login" onClick={closeNavbar}>Login</Link>
-                        </li>}
-                        {token && <button className="btn btn-outline-danger ms-3" onClick={() => {handleLogout();closeNavbar();}}>
-                            Logout
-                        </button>}
+                        <li className="nav-item"><Link className="nav-link active" aria-current="page" to="/" onClick={closeNavbar}>Home</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/recentlogs" onClick={closeNavbar}>Recent Logs</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/PublicView" onClick={closeNavbar}>View Prios</Link></li>
+                        {!token && <li className="nav-item"><Link className="nav-link" to="/login" onClick={closeNavbar}>Login</Link></li>}
+
+                        {token && (
+                            <>
+                                <li className="nav-item"><Link className="nav-link" to="/players" onClick={closeNavbar}>Players</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/characters" onClick={closeNavbar}>Characters</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/raidrewards" onClick={closeNavbar}>Rewards</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/gp" onClick={closeNavbar}>GP</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/ep" onClick={closeNavbar}>EP</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/log" onClick={closeNavbar}>Logs</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/settings" onClick={closeNavbar}>Settings</Link></li>
+                                                                                                                                                                                                           </li>
+                                <button className="btn btn-outline-danger ms-3" onClick={() => {handleLogout();closeNavbar();}}>Logout</button>
+                            </>
+                        )}
                     </ul>
                 </div>
             </div>

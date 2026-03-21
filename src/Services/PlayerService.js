@@ -68,7 +68,6 @@ export function ListAllPlayers() {
                         <th>ID</th>
                         <th>Player</th>
                         <th>Characters</th>
-                        <th>Rank</th>
                         <th>EP</th>
                         <th>GP</th>
                         <th>Prio</th>
@@ -82,7 +81,6 @@ export function ListAllPlayers() {
                                 <td>{player.id}</td>
                                 <td>{player.name}</td>
                                 <td style={{ whiteSpace: 'pre-line' }}>{player.characters.join('\n')}</td>
-                                <td>{player.rank}</td>
                                 <td>{player.ep}</td>
                                 <td>{player.gp}</td>
                                 <td className="text-warning">{player.prio}</td>
@@ -155,8 +153,7 @@ export function AddPlayerForm({token}) {
 
     function addPlayer(formdata) {
         const player = {
-            "name": formdata.get("playerNameInput"),
-            "rank": formdata.get("playerRankInput")
+            "name": formdata.get("playerNameInput")
         }
         console.log(player);
         console.log(JSON.stringify(player));
@@ -182,13 +179,7 @@ export function AddPlayerForm({token}) {
                     <p className="textSmall">Player Name:</p>
                     <input name = "playerNameInput" className="textMedium"/>
                 </div>
-                <p className="textSmall">Player Rank:</p>
                 <div className="d-flex align-items-center justify-content-center">
-                    <select name = "playerRankInput" className="textMedium form-select"> 
-                        <option name="Member">Member</option>
-                        <option name="Officer">Officer</option>
-                        <option name="Guildmaster">Guildmaster</option>
-                    </select>
                     <button type ="submit" className = "btn btn-primary">Submit</button>
                 </div>
             </form>
@@ -199,7 +190,6 @@ export function EditPlayerForm({token}) {
     const [players, setPlayers] = useState([]);
     const [playerId, setPlayerId] = useState(0);
     const [playerName, setPlayerName] = useState('');
-    const [playerRank, setPlayerRank] = useState('');
     const [playerEp, setPlayerEp] = useState('');
     const [playerGp, setPlayerGp] = useState('');
     const [playerActive, setPlayerActive] = useState('');
@@ -208,7 +198,6 @@ export function EditPlayerForm({token}) {
         const player = {
             "id": playerId,
             "name": formdata.get("playerNameInput"),
-            "rank": formdata.get("playerRankInput"),
             "ep": formdata.get("playerEpInput"),
             "gp": formdata.get("playerGpInput"),
             "active": formdata.get("playerActiveInput")
@@ -234,7 +223,6 @@ export function EditPlayerForm({token}) {
         const player = JSON.parse(context.target.value);
         console.log(player);
         setPlayerName(player.name);
-        setPlayerRank(player.rank);
         setPlayerEp(player.ep);
         setPlayerGp(player.gp);
         setPlayerId(player.id);
@@ -250,7 +238,6 @@ export function EditPlayerForm({token}) {
                 let player = data[0];
                 if(player != null){
                     setPlayerName(player.name);
-                    setPlayerRank(player.rank);
                     setPlayerEp(player.ep);
                     setPlayerGp(player.gp);
                     setPlayerId(player.id);
@@ -277,11 +264,6 @@ export function EditPlayerForm({token}) {
                 <div className="d-flex align-items-center justify-content-center">
                     <p className="textMedium w-50 mt-3" >ID: {playerId}</p>
                     <input name="playerNameInput" className="textMedium w-75 mx-2" value={playerName} onChange={(e) => setPlayerName(e.target.value)}/>
-                    <select name="playerRankInput" className="textSmall form-select w-50" value={playerRank} onChange={(e) => setPlayerRank(e.target.value)} >
-                        <option name="Member">Member</option>
-                        <option name="Officer">Officer</option>
-                        <option name="Guildmaster">Guildmaster</option>
-                    </select>
                 </div>
                 <div className="d-flex align-items-center justify-content-center my-auto">
                     <p className="textMedium my-auto">EP: </p>
@@ -384,7 +366,6 @@ export function DeletePlayerForm({token}) {
                 </div>
                 <p className="textSmall">Player ID: {player.id}</p>
                 <p className="textSmall">Player name: {player.name}</p>
-                <p className="textSmall">Player classification: {player.rank}</p>
                 <button type="submit" className="btn btn-danger">Delete</button>
             </form>
             );
