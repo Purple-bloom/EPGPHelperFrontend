@@ -12,7 +12,6 @@ import Ep from "./Components/EpManager"
 import Gp from "./Components/GpManager"
 import Raidrewards from "./Components/RaidrewardManager"
 import Logs from "./Components/LogViewer"
-import RecentLogs from "./Components/RecentLogViewer"
 import Settings from "./Components/SettingManager"
 import Login from "./Components/Login"
 import PublicView from "./Components/PublicView"
@@ -51,7 +50,6 @@ function App() {
                              <ProtectedRoute token={token}> < Ep token={token} / > </ProtectedRoute>
                          } />
                         <Route path="/log" element={ < Logs / > } />
-                        <Route path="/recentlogs" element={ < RecentLogs / > } />
                         <Route path="/publicview" element={ < PublicView / > } />
                         <Route path="/settings" element={
                             <ProtectedRoute token={token}> < Settings token={token} / > </ProtectedRoute>
