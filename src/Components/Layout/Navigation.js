@@ -52,7 +52,6 @@ export default function Navigation({ token }) {
                                 <li className="nav-item"><Link className="nav-link" to="/ep" onClick={closeNavbar}>EP</Link></li>
                                 <li className="nav-item"><Link className="nav-link" to="/log" onClick={closeNavbar}>Logs</Link></li>
                                 <li className="nav-item"><Link className="nav-link" to="/settings" onClick={closeNavbar}>Settings</Link></li>
-                                                                                                                                                                                                           </li>
                                 <button className="btn btn-outline-danger ms-3" onClick={() => {handleLogout();closeNavbar();}}>Logout</button>
                             </>
                         )}
