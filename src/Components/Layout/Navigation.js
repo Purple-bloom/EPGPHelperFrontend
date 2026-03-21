@@ -39,7 +39,6 @@ export default function Navigation({ token }) {
                 <div className="collapse navbar-collapse" id="navbarNav" ref={navBarRef}>
                     <ul className="navbar-nav">
                         <li className="nav-item"><Link className="nav-link active" aria-current="page" to="/" onClick={closeNavbar}>Home</Link></li>
-                        <li className="nav-item"><Link className="nav-link" to="/recentlogs" onClick={closeNavbar}>Recent Logs</Link></li>
                         <li className="nav-item"><Link className="nav-link" to="/PublicView" onClick={closeNavbar}>View Prios</Link></li>
                         {!token && <li className="nav-item"><Link className="nav-link" to="/login" onClick={closeNavbar}>Login</Link></li>}
 

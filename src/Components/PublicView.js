@@ -4,9 +4,13 @@ import {ListAllPlayers} from '../Services/PlayerService.js'
 export default function PublicView({ token }) {
     return (
             <div className="bg-dark text-light container">
-                <h1>PRIO</h1>
                 <div className="row">
+                    <h1>PRIO</h1>
                     <ListAllPlayers/>
+                </div>
+                <div className="row">
+                    <h1>RECENT LOGS</h1>
+                    <ListRecentLogs/>
                 </div>
             </div>
             );
