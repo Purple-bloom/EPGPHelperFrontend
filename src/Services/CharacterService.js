@@ -80,17 +80,6 @@ export function ViewCharactersForPlayer({token}) {
 
     return (
             <div className="border border-secondary border-2 rounded p-2">
-                <form onLoad={updateCharacters} onChange={updateCharacters}>
-                    <h2>View Characters for Player</h2>
-                    <div>
-                        <p className="textSmall">Player:</p>
-                        <select name="characterPlayerInput" className="textMedium">
-                            {players.map(player => (
-                                        <option key={player.id} value={JSON.stringify(player)}>{player.name}</option>
-                                                    ))}
-                        </select>
-                    </div>
-                </form>
                 <table className = "table table-dark">
                     <tbody>
                         <tr>
