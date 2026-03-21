@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import {ListAllPlayers} from '../Services/PlayerService.js'
+import {ListRecentLogs} from '../Services/LogService.js'
 
 export default function PublicView({ token }) {
     return (
