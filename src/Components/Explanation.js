@@ -91,7 +91,7 @@ export default function Explanation() {
                                 >
                                     ← Back
                                 </button>
-                                <span className="small text-muted">{current + 1} / {steps.length}</span>
+                                <span className="small text-secondary">{current + 1} / {steps.length}</span>
                                 <button
                                     className="btn btn-sm btn-info"
                                     disabled={current === steps.length - 1}
