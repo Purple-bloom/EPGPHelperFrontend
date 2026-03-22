@@ -210,7 +210,6 @@ export function GpAwardForm({token}){
                 <form onSubmit={awardGpAddon}>
                     <div className="form-group d-flex align-items-center justify-content-center">
                         <div className="container">
-                            <p className="textSmall">Addon GP Export:</p>
                             <input name = "addonGpExportInput" className="textMedium"/>
                             <button type ="submit" className = "btn btn-primary my-auto">Submit</button>
                         </div>
