@@ -62,7 +62,7 @@ export default function Explanation() {
                                                 <span className="text-muted">÷</span>
                                                 <span className="badge bg-secondary text-light px-2">
                                                     {raider.data.gp} GP
-                                                    {raider.data.gpChange && <span className="text-danger ms-1">{raider.data.gpChange}</span>}
+                                                    {raider.data.gpChange && <span className="text-danger-emphasis ms-1">{raider.data.gpChange}</span>}
                                                 </span>
                                                 <span className="text-muted">=</span>
                                                 <span className={`badge px-2 ${raider.name === s.winner ? 'bg-success' : 'bg-primary'}`}>
@@ -77,7 +77,7 @@ export default function Explanation() {
                                 </div>
 
                                 <div className="p-2 text-center">
-                                    <p className="small text-secondary mb-0" style={{ lineHeight: '1.4' }}>
+                                    <p className="text-info-emphasis mb-0" style={{ lineHeight: '1.4' }}>
                                         {s.note}
                                     </p>
                                 </div>
