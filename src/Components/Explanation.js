@@ -31,6 +31,11 @@ const steps = [
 ];
 
 export default function Explanation() {
+    const [current, setCurrent] = useState(0);
+    const s = steps[current];
+
+    const calculatePr = (ep, gp) => (ep / gp).toFixed(1);
+
     return (
             <div className="bg-dark text-light app-container">
                 <h4 className="text-info">{s.heading}</h4>
