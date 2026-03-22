@@ -138,13 +138,14 @@ export function GpAwardForm({token}){
 
     function awardGpAddon(event){
             event.preventDefault();
+            const formData = new FormData(event.currentTarget);
             fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/awardGpAddon", {
                 method: 'POST',
                 headers: {
                     'Authorization': token,
                     'Content-Type': 'application/json'
                 },
-                body: event.get("addonGpExportInput")
+                body: formData.get("addonGpExportInput")
             })
                     .then(response => response.text().then(data => {
                         alert(JSON.stringify(data));
