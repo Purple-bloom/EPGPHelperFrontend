@@ -11,8 +11,8 @@ const steps = [
     },
     {
         heading: "An item drops — Alice bids low, Bob bids mid",
-        alice: { ep: 1800, gp: 20, bid: 'low' },
-        bob: { ep: 1200, gp: 40, bid: 'mid' },
+        alice: { ep: 1800, gp: 20, bid: 'low', bidOk: true },
+        bob: { ep: 1200, gp: 40, bid: 'mid', bidOk: true },
         note: "Alice only wants this a little (bids low). Bob really wants it and qualifies for mid (PR 30).",
         winner: "Bob"
     },
@@ -21,6 +21,12 @@ const steps = [
         alice: { ep: 1800, gp: 20 },
         bob: { ep: 1200, gp: 70, gpChange: "+30" },
         note: "Bob's PR drops to 17.1. He's now below the mid threshold (30)."
+    },
+    {
+        heading: "Another item drops — Alice bids high, Bob tries mid",
+        alice: { ep: 1800, gp: 20,  bid: 'high', bidOk: true },
+        bob:   { ep: 1200, gp: 70,  bid: 'mid', bidOk: false, downgradeTo: 'low' },
+        note: "It's a big item — Alice wants it badly and her PR of 90 qualifies her for a high bid. Bob tries to bid mid, but his PR is only 17.1 — below the 30 threshold. His bid is dropped to low.",
     },
     {
         heading: "Alice wins a high bid — costs +90 GP",
@@ -70,7 +76,8 @@ export default function Explanation() {
                                                 </span>
                                             </div>
                                             <div style={{width: '60px', textAlign: 'right'}}>
-                                                {raider.data.bid && <span className="badge bg-warning text-dark" style={{fontSize: '0.7rem'}}>{raider.data.bid}</span>}
+                                                {raider.data.bid && <span className="badge bg-warning text-dark" style={{fontSize: '0.7rem'}}>{raider.data.bid}
+                                                {raider.data.bidOk == false && <span className="ms-1 fw-bold">bid downgrade to {raider.data.downgradeTo}</span>}</span>}
                                             </div>
                                         </div>
                                     ))}
