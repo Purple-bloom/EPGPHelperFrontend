@@ -44,7 +44,7 @@ export default function Explanation() {
 
     return (
             <div className="card bg-dark text-light border-secondary mx-auto shadow"
-                         style={{ maxWidth: '600px', minHeight: '450px' }}>
+                         style={{ maxWidth: '800px', minHeight: '450px' }}>
 
                         <div className="card-body d-flex flex-column p-4">
                             <div className="text-center mb-3">
