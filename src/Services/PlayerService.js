@@ -81,8 +81,8 @@ export function ListAllPlayers() {
                                 <td>{player.id}</td>
                                 <td>{player.name}</td>
                                 <td style={{ whiteSpace: 'pre-line' }}>{player.characters.join('\n')}</td>
-                                <td>{player.ep}</td>
-                                <td>{player.gp}</td>
+                                <td>{(Math.round(player.ep * 100) / 100).toFixed(2)}</td>
+                                <td>{(Math.round(player.gp * 100) / 100).toFixed(2)}</td>
                                 <td className="text-warning">{player.prio}</td>
                                 <td>{player.active.toString()}</td>
                             </tr>
