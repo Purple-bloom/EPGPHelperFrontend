@@ -26,7 +26,7 @@ const steps = [
         heading: "Another item drops: Alice bids high, Bob tries mid",
         alice: { ep: 1800, gp: 20,  bid: 'high', bidOk: true },
         bob:   { ep: 1200, gp: 70,  bid: 'mid', bidOk: false, downgradeTo: 'low' },
-        note: "It's a big item: Alice wants it badly and her PR of 90 qualifies her for a high bid. Bob tries to bid mid, but his PR is only 17.1 — below the 30 threshold. His bid is dropped to low.",
+        note: "It's a big item: Alice wants it badly and her PR of 90 qualifies her for a high bid. Bob tries to bid mid, but his PR is only 17.1 which is below the 30 threshold. His bid is dropped to low.",
     },
     {
         heading: "Alice wins a high bid and gets +90 GP (price of a high bid)",
