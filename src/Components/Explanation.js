@@ -10,26 +10,26 @@ const steps = [
         note: "Alice has been raiding a long time. Her PR of 90 is high. Bob is newer; his PR of 30 just qualifies him to bid mid."
     },
     {
-        heading: "An item drops — Alice bids low, Bob bids mid",
+        heading: "An item drops: Alice bids low, Bob bids mid",
         alice: { ep: 1800, gp: 20, bid: 'low', bidOk: true },
         bob: { ep: 1200, gp: 40, bid: 'mid', bidOk: true },
         note: "Alice only wants this a little (bids low). Bob really wants it and qualifies for mid (PR 30).",
         winner: "Bob"
     },
     {
-        heading: "Bob wins — mid bid costs +30 GP",
+        heading: "Bob wins and gets +30 GP (price of a mid bid)",
         alice: { ep: 1800, gp: 20 },
         bob: { ep: 1200, gp: 70, gpChange: "+30" },
         note: "Bob's PR drops to 17.1. He's now below the mid threshold (30)."
     },
     {
-        heading: "Another item drops — Alice bids high, Bob tries mid",
+        heading: "Another item drops: Alice bids high, Bob tries mid",
         alice: { ep: 1800, gp: 20,  bid: 'high', bidOk: true },
         bob:   { ep: 1200, gp: 70,  bid: 'mid', bidOk: false, downgradeTo: 'low' },
-        note: "It's a big item — Alice wants it badly and her PR of 90 qualifies her for a high bid. Bob tries to bid mid, but his PR is only 17.1 — below the 30 threshold. His bid is dropped to low.",
+        note: "It's a big item: Alice wants it badly and her PR of 90 qualifies her for a high bid. Bob tries to bid mid, but his PR is only 17.1 — below the 30 threshold. His bid is dropped to low.",
     },
     {
-        heading: "Alice wins a high bid — costs +90 GP",
+        heading: "Alice wins a high bid and gets +90 GP (price of a high bid)",
         alice: { ep: 1800, gp: 110, gpChange: "+90" },
         bob: { ep: 1200, gp: 70 },
         note: "Alice's PR crashes to 16.4. She got the item, but Bob now has higher priority!"
@@ -44,7 +44,7 @@ export default function Explanation() {
 
     return (
             <div className="card bg-dark text-light border-secondary mx-auto shadow"
-                         style={{ maxWidth: '800px', minHeight: '450px' }}>
+                         style={{ maxWidth: '600px', minHeight: '450px' }}>
 
                         <div className="card-body d-flex flex-column p-4">
                             <div className="text-center mb-3">
@@ -75,7 +75,7 @@ export default function Explanation() {
                                                     {calculatePr(raider.data.ep, raider.data.gp)} PR
                                                 </span>
                                             </div>
-                                            <div style={{width: '60px', textAlign: 'right'}}>
+                                            <div style={{minWidth: 'fit-content', textAlign: 'right'}}>
                                                 {raider.data.bid && <span className="badge bg-warning text-dark" style={{fontSize: '0.7rem'}}>{raider.data.bid}
                                                 {raider.data.bidOk == false && <span className="ms-1 fw-bold">bid downgrade to {raider.data.downgradeTo}</span>}</span>}
                                             </div>
