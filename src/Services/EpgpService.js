@@ -135,6 +135,22 @@ export function GpAwardForm({token}){
 
                 }));
     }
+
+    function awardGpAddon(event){
+            event.preventDefault();
+            fetch(process.env.REACT_APP_BACKEND_URL+"/api/player/awardGpAddon", {
+                method: 'POST',
+                headers: {
+                    'Authorization': token,
+                    'Content-Type': 'application/json'
+                },
+                body: event.get("addonGpExportInput")
+            })
+                    .then(response => response.text().then(data => {
+                        alert(JSON.stringify(data));
+                        window.location.reload();
+                    }));
+        }
     
     function updateCharacterSelection(event){
         const character = JSON.parse(event.target.value);
@@ -185,6 +201,17 @@ export function GpAwardForm({token}){
                                 <option value="2">MID</option>
                                 <option value="3">HIGH</option>
                             </select>
+                            <button type ="submit" className = "btn btn-primary my-auto">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+                <h2>Addon GP export:</h2>
+                <form onSubmit={awardGpAddon}>
+                    <div className="form-group d-flex align-items-center justify-content-center">
+                        <div className="container">
+                            <p className="textSmall">Addon GP Export:</p>
+                            <input name = "addonGpExportInput" className="textMedium"/>
                             <button type ="submit" className = "btn btn-primary my-auto">Submit</button>
                         </div>
                     </div>
