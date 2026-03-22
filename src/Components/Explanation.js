@@ -77,7 +77,7 @@ export default function Explanation() {
                                 </div>
 
                                 <div className="p-2 text-center">
-                                    <p className="text-info-emphasis mb-0" style={{ lineHeight: '1.4' }}>
+                                    <p className="text-light mb-0" style={{ lineHeight: '1.4' }}>
                                         {s.note}
                                     </p>
                                 </div>
