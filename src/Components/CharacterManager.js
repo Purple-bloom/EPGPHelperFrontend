@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import {AddCharacterForm, EditCharacterForm, ViewCharactersForPlayer, DeleteCharacterForm, ViewAllCharacters} from '../Services/CharacterService.js'
+import {AddCharacterForm, EditCharacterForm, DeleteCharacterForm, ViewAllCharacters} from '../Services/CharacterService.js'
 
 export default function Characters({ token }) {
     return (
@@ -12,7 +12,6 @@ export default function Characters({ token }) {
                         <DeleteCharacterForm token={token} />
                     </div>
                     <div className = "col">
-                        <ViewCharactersForPlayer token={token} />
                         <ViewAllCharacters token={token} />
                     </div>
                 </div>

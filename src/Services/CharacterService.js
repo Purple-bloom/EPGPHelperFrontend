@@ -46,68 +46,6 @@ async function getCharactersForPlayerId(id, token) {
     }
 }
 
-export function ViewCharactersForPlayer({token}) {
-    const [players, setPlayers] = useState([]);
-    const [characters, setCharacters] = useState([]);
-
-    function updateCharacters(event) {
-        event.preventDefault();
-        const player = JSON.parse(event.target.value);
-        console.log(player);
-        getCharactersForPlayerId(player.id, token).then(
-                (charArray) => {
-            console.log(charArray);
-            setCharacters(charArray);
-        });
-    }
-    
-    useEffect(() => {
-        const fetchPlayers = async () => {
-            try {
-                const data = await getAllPlayers();
-                setPlayers(data);
-                getCharactersForPlayerId(data[0].id, token).then(
-                        (charArray) => {
-                    console.log(charArray);
-                    setCharacters(charArray)
-                });
-            } catch (error) {
-                console.error('Error fetching players:', error);
-            }
-        };
-        fetchPlayers();
-    }, []);
-
-    return (
-            <div className="border border-secondary border-2 rounded p-2">
-                <table className = "table table-dark">
-                    <tbody>
-                        <tr>
-                            <th>
-                                Player
-                            </th>
-                            <th>
-                                Character
-                            </th>
-                            <th>
-                                Classification
-                            </th>
-                        </tr>
-                        {characters.length > 0 && (
-                                    characters.map((character) => (
-                                        <tr key = {character.id}>
-                                            <td>{character.player.name}</td>
-                                            <td>{character.name}</td>
-                                            <td>{character.classification}</td>
-                                        </tr>
-                                                ))
-                                    )}
-                    </tbody>
-                </table>
-            </div>
-            );
-}
-
 export function ViewAllCharacters({token}) {
     const [characters, setCharacters] = useState([]);
     
