@@ -187,7 +187,7 @@ export function GpAwardForm({token}){
                     </div>
                 </form>
 
-                <h2>Award Offspec (half) GP for character:</h2>
+                <h2>Award GP for character (offspec discount):</h2>
                 <form onSubmit={awardGpOffspec}>
                     <div className="form-group d-flex align-items-center justify-content-center">
                         <div className="container">
