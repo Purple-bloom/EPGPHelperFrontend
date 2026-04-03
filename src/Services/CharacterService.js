@@ -274,7 +274,6 @@ export function EditCharacterForm({token}) {
     }, []);
 
     function editCharacter(event) {
-        event.preventDefault();
         console.log(event);
         const formData = event.target;
         console.log(selectedPlayerId);
