@@ -51,6 +51,21 @@ export function ListAllPlayers() {
         }
     };
 
+    const classColors = {
+      Warrior: '#C69B6D',
+      Paladin: '#F48CBA',
+      Hunter: '#AAD372',
+      Shaman: '#0070DD',
+      Druid: '#FF7C0A',
+      Rogue: '#FFF468',
+      Mage: '#3FC7EB',
+      Priest: '#FFFFFF',
+      Warlock: '#8788EE',
+      default: '#6E6E6E'
+    };
+
+    const getColorByClass = (charClass) => classColors[charClass] || classColors.default;
+
     return (
         <div className="border border-secondary border-2 rounded p-2">
             <div className="d-flex justify-content-between align-items-center mb-3">
@@ -80,7 +95,13 @@ export function ListAllPlayers() {
                             <tr key={player.id}>
                                 <td>{player.id}</td>
                                 <td>{player.name}</td>
-                                <td style={{ whiteSpace: 'pre-line' }}>{player.characters.join('\n')}</td>
+                                <td style={{ whiteSpace: 'pre-line' }}>
+                                    {player.characters.map((char, index) => (
+                                        <div style={{ color: getColorByClass(char.characterClass) }}>
+                                          {char.name}
+                                        </div>
+                                      ))}
+                                </td>
                                 <td>{(Math.round(player.ep * 100) / 100).toFixed(2)}</td>
                                 <td>{(Math.round(player.gp * 100) / 100).toFixed(2)}</td>
                                 <td className="text-warning">{player.prio}</td>

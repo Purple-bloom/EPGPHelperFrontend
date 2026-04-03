@@ -76,6 +76,9 @@ export function ViewAllCharacters({token}) {
                             <th>
                                 Classification
                             </th>
+                            <th>
+                                Class
+                            </th>
                         </tr>
                         {characters.length > 0 && (
                                     characters.map((character) => (
@@ -83,6 +86,7 @@ export function ViewAllCharacters({token}) {
                                             <td>{character.player.name}</td>
                                             <td>{character.name}</td>
                                             <td>{character.classification}</td>
+                                            <td>{character.characterClass}</td>
                                         </tr>
                                                 ))
                                     )}
@@ -100,10 +104,12 @@ export function AddCharacterForm({token}) {
         const playerInput = formData.elements["characterPlayerInput"].value;
         const nameInput = formData.elements["characterNameInput"].value;
         const classificationInput = formData.elements["characterClassificationInput"].value;
+        const classInput = formData.elements["characterClassInput"].value;
         const character = {
             "player": JSON.parse(playerInput),
             "name": nameInput,
-            "classification": classificationInput
+            "classification": classificationInput,
+            "characterClass": classInput
         };
         const bodyString = JSON.stringify(character)
         console.log("bodyString: " + bodyString);
@@ -152,6 +158,17 @@ export function AddCharacterForm({token}) {
                         <option name="main" value="main">Main</option>
                         <option name="alt" value="alt">Alt</option>
                     </select>
+                    <select name = "characterClassInput" className="textMedium">
+                        <option value="Warrior">Warrior</option>
+                        <option value="Paladin">Paladin</option>
+                        <option value="Shaman">Shaman</option>
+                        <option value="Hunter">Hunter</option>
+                        <option value="Rogue">Rogue</option>
+                        <option value="Druid">Druid</option>
+                        <option value="Priest">Priest</option>
+                        <option value="Warlock">Warlock</option>
+                        <option value="Mage">Mage</option>
+                    </select>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </form>
@@ -166,7 +183,8 @@ export function EditCharacterForm({token}) {
     const [characterId, setCharacterId] = useState(0);
     const [characterName, setCharacterName] = useState('');
     const [characterClassification, setCharacterClassification] = useState('');
-    
+    const [characterClass, setCharacterClass] = useState('');
+
     useEffect(() => {
         const fetchAllCharacters = async () => {
             try {
@@ -194,6 +212,7 @@ export function EditCharacterForm({token}) {
                 setCharacterId(charArray[0].id);
                 setCharacterName(charArray[0].name);
                 setCharacterClassification(charArray[0].classification);
+                setCharacterClass(charArray[0].characterClass);
             }
         });
     }
@@ -204,6 +223,7 @@ export function EditCharacterForm({token}) {
         setCharacterId(character.id);
         setCharacterName(character.name);
         setCharacterClassification(character.classification);
+        setCharacterClass(character.characterClass);
     }
     
     function updateCharacterSelectionFromAllCharacters(event) {
@@ -213,6 +233,7 @@ export function EditCharacterForm({token}) {
         setCharacterId(character.id);
         setCharacterName(character.name);
         setCharacterClassification(character.classification);
+        setCharacterClass(character.characterClass);
         getCharactersForPlayerId(character.player.id, token).then(
                 (charArray) => {
             console.log(charArray);
@@ -221,6 +242,7 @@ export function EditCharacterForm({token}) {
                 setCharacterId(charArray[0].id);
                 setCharacterName(charArray[0].name);
                 setCharacterClassification(charArray[0].classification);
+                setCharacterClass(charArray[0].characterClass);
             }
         });
     }
@@ -240,6 +262,7 @@ export function EditCharacterForm({token}) {
                             setCharacterId(charArray[0].id);
                             setCharacterName(charArray[0].name);
                             setCharacterClassification(charArray[0].classification);
+                            setCharacterClass(charArray[0].characterClass);
                         }
                     });
                 }
@@ -259,7 +282,8 @@ export function EditCharacterForm({token}) {
             "id": characterId,
             "playerId": selectedPlayerId,
             "name": characterName,
-            "classification": characterClassification
+            "classification": characterClassification,
+            "characterClass": characterClass || "Warrior" //default is warrior, as its the topmost option.
         };
         const bodyString = JSON.stringify(character);
         console.log("bodyString: " + bodyString);
@@ -310,6 +334,17 @@ export function EditCharacterForm({token}) {
                     <select name = "characterClassificationInput" className="textMedium" value={characterClassification} onChange={(e) => setCharacterClassification(e.target.value)}> 
                         <option name="main" value="main">Main</option>
                         <option name="alt" value="alt">Alt</option>
+                    </select>
+                    <select name = "characterClassInput" className="textMedium" value={characterClass} onChange={(e) => setCharacterClass(e.target.value)}>
+                        <option value="Warrior">Warrior</option>
+                        <option value="Paladin">Paladin</option>
+                        <option value="Shaman">Shaman</option>
+                        <option value="Hunter">Hunter</option>
+                        <option value="Rogue">Rogue</option>
+                        <option value="Druid">Druid</option>
+                        <option value="Priest">Priest</option>
+                        <option value="Warlock">Warlock</option>
+                        <option value="Mage">Mage</option>
                     </select>
                     <button type="submit" className="btn btn-primary">Update</button>
                 </div>
