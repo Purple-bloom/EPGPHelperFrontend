@@ -21,8 +21,9 @@ export function ListAllPlayers() {
     const handleCopyToClipboard = async () => {
         if (players.length === 0) return;
 
+
         const infoString = players.map(player => {
-            const characterList = player.characters.join(',');
+            const characterList = player.characters.map(char => char.name).join(', ');
             const formattedPrio = Number(player.prio).toFixed(3);
             return `${characterList}:${formattedPrio}`;
         }).join(';');
