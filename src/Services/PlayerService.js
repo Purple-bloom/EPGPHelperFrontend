@@ -99,7 +99,7 @@ export function ListAllPlayers() {
                                 <td style={{ whiteSpace: 'pre-line' }}>
                                     {player.characters.map((char, index) => (
                                         <div style={{ color: getColorByClass(char.characterClass) }}>
-                                          {char.name}
+                                          {char.name} {char.classification}
                                         </div>
                                       ))}
                                 </td>
