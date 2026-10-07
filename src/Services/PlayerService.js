@@ -200,8 +200,6 @@ export function AddPlayerForm({token}) {
                 <div>
                     <p className="textSmall">Player Name:</p>
                     <input name = "playerNameInput" className="textMedium"/>
-                </div>
-                <div className="d-flex align-items-center justify-content-center">
                     <button type ="submit" className = "btn btn-primary">Submit</button>
                 </div>
             </form>

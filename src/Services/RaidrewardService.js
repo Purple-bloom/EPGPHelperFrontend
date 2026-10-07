@@ -95,26 +95,34 @@ export function CreateRaidrewardForm({token}) {
     }
 
     return (
-            <div className="border border-secondary border-2 rounded p-2">
-                <h2>Create new Raidreward:</h2>
-                <form action = {addRaidreward} >
-                    <div className="form-group">
-                        <p className="textSmall">Raid:</p>
-                        <select name="raidInput" className="textMedium" onChange = {updateRaidSelection}>
-                            {raids.map(raid => (
+            <div className="border border-secondary border-2 rounded p-3">
+                <h2 className="mb-3">Create new Raidreward:</h2>
+                <form action={addRaidreward}>
+                    <div className="form-group d-flex flex-column gap-2">
+                        <div className="row align-items-center">
+                            <label className="col-sm-4 text-end textSmall mb-0">Raid:</label>
+                            <div className="col-sm-8">
+                                <select name="raidInput" className="form-select textMedium" onChange={updateRaidSelection}>
+                                    {raids.map(raid => (
                                         <option key={raid.id} value={JSON.stringify(raid)}>{raid.name}</option>
-                                                    ))}
-                        </select>
-                        <div>
-                            <p className="textSmall">Rewardtype:</p>
-                            <input name = "rewardTypeInput" className="textMedium"/>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
-                        <div>
-                            <p className="textSmall">Rewardvalue:</p>
-                            <input name = "rewardValueInput" className="textMedium"/>
+                        <div className="row align-items-center">
+                            <label className="col-sm-4 text-end textSmall mb-0">Rewardtype:</label>
+                            <div className="col-sm-8">
+                                <input name="rewardTypeInput" className="form-control textMedium" />
+                            </div>
                         </div>
-                        <div className="d-flex align-items-center justify-content-center">
-                            <button type ="submit" className = "btn btn-primary">Submit</button>
+                        <div className="row align-items-center">
+                            <label className="col-sm-4 text-end textSmall mb-0">Rewardvalue:</label>
+                            <div className="col-sm-8">
+                                <input name="rewardValueInput" className="form-control textMedium" />
+                            </div>
+                        </div>
+                        <div className="d-flex align-items-center justify-content-center mt-3">
+                            <button type="submit" className="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -168,26 +176,41 @@ export function UpdateRaidrewardForm({token}) {
     }
 
     return (
-            <div className="border border-secondary border-2 rounded p-2">
-                <h2>Update Raidreward:</h2>
-                <form action = {updateRaidreward} >
-                    <div className="form-group">
-                        <p className="textSmall">Raid:</p>
-                        <select name="raidrewardInput" className="textMedium" onChange = {updateRaidrewardSelection}>
-                            {raidrewards.map(raidreward => (
-                                        <option key={raidreward.id} value={JSON.stringify(raidreward)}>{raidreward.id}: {raidreward.raid.name} - {raidreward.rewardType} {raidreward.rewardValue}</option>
-                                                    ))}
-                        </select>
-                        <div>
-                            <p className="textSmall">Rewardtype:</p>
-                            <input name = "rewardTypeInput" className="textMedium" value={selectedRaidreward.rewardType} disabled/>
+            <div className="border border-secondary border-2 rounded p-3">
+                <h2 className="mb-3">Update Raidreward:</h2>
+                <form action={updateRaidreward}>
+                    <div className="form-group d-flex flex-column gap-2">
+                        <div className="row align-items-center">
+                            <label className="col-sm-4 text-end textSmall mb-0">Raid:</label>
+                            <div className="col-sm-8">
+                                <select name="raidrewardInput" className="form-select textMedium" onChange={updateRaidrewardSelection}>
+                                    {raidrewards.map(raidreward => (
+                                        <option key={raidreward.id} value={JSON.stringify(raidreward)}>
+                                            {raidreward.id}: {raidreward.raid.name} - {raidreward.rewardType} {raidreward.rewardValue}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
-                        <div>
-                            <p className="textSmall">Rewardvalue:</p>
-                            <input name = "rewardValueInput" className="textMedium"/>
+                        <div className="row align-items-center">
+                            <label className="col-sm-4 text-end textSmall mb-0">Rewardtype:</label>
+                            <div className="col-sm-8">
+                                <input
+                                    name="rewardTypeInput"
+                                    className="form-control textMedium"
+                                    value={selectedRaidreward.rewardType || ''}
+                                    disabled
+                                />
+                            </div>
                         </div>
-                        <div className="d-flex align-items-center justify-content-center">
-                            <button type ="submit" className = "btn btn-primary">Submit</button>
+                        <div className="row align-items-center">
+                            <label className="col-sm-4 text-end textSmall mb-0">Rewardvalue:</label>
+                            <div className="col-sm-8">
+                                <input name="rewardValueInput" className="form-control textMedium" />
+                            </div>
+                        </div>
+                        <div className="d-flex align-items-center justify-content-center mt-3">
+                            <button type="submit" className="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -236,24 +259,161 @@ export function DeleteRaidrewardForm({token}) {
     }
 
     return (
-            <div className="border border-secondary border-2 rounded p-2">
-                <h2>Delete Raidreward:</h2>
-                <form action = {deleteRaidreward} >
-                    <div className="form-group">
-                        <p className="textSmall">Raid:</p>
-                        <select name="raidrewardInput" className="textMedium" onChange = {updateRaidrewardSelection}>
-                            {raidrewards.map(raidreward => (
-                                        <option key={raidreward.id} value={JSON.stringify(raidreward)}>{raidreward.id}: {raidreward.raid.name} - {raidreward.rewardType} {raidreward.rewardValue}</option>
-                                                    ))}
-                        </select>
-                        <div className="d-flex align-items-center justify-content-center">
-                            <button type ="submit" className = "btn btn-danger">Delete</button>
+            <div className="border border-secondary border-2 rounded p-3">
+                <h2 className="mb-3">Delete Raidreward:</h2>
+                <form action={deleteRaidreward}>
+                    <div className="form-group d-flex flex-column gap-2">
+                        <div className="row align-items-center">
+                            <label className="col-sm-4 text-end textSmall mb-0">Raid:</label>
+                            <div className="col-sm-8">
+                                <select name="raidrewardInput" className="form-select textMedium" onChange={updateRaidrewardSelection}>
+                                    {raidrewards.map(raidreward => (
+                                        <option key={raidreward.id} value={JSON.stringify(raidreward)}>
+                                            {raidreward.id}: {raidreward.raid.name} - {raidreward.rewardType} {raidreward.rewardValue}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+                        <div className="d-flex align-items-center justify-content-center mt-3">
+                            <button type="submit" className="btn btn-danger">Delete</button>
                         </div>
                     </div>
                 </form>
             </div>
             );
 }
+
+export function CreateRaidForm({ token }) {
+    function addRaid(formdata) {
+        const raidName = formdata.get("raidNameInput");
+        if (!raidName || raidName.trim() === "") {
+            alert("Please enter a valid raid name.");
+            return;
+        }
+
+        const raid = {
+            id: null,
+            name: raidName
+        };
+
+        fetch(process.env.REACT_APP_BACKEND_URL + "/api/raid/create", {
+            method: 'POST',
+            headers: {
+                'Authorization': token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(raid)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Raid created successfully!");
+            } else {
+                alert("Failed to create raid.");
+            }
+        })
+        .catch(error => console.error('Error creating raid:', error));
+    }
+
+    return (
+        <div className="border border-secondary border-2 rounded p-3">
+            <h2 className="mb-3">Create new Raid:</h2>
+            <form action={addRaid}>
+                <div className="form-group d-flex flex-column gap-2">
+                    <div className="row align-items-center">
+                        <label className="col-sm-4 text-end textSmall mb-0">Raid Name:</label>
+                        <div className="col-sm-8">
+                            <input name="raidNameInput" className="form-control textMedium" required />
+                        </div>
+                    </div>
+                    <div className="d-flex align-items-center justify-content-center mt-3">
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    );
+}
+
+export function DeleteRaidForm({ token }) {
+    const [raids, setRaids] = useState([]);
+    const [selectedRaid, setSelectedRaid] = useState(null);
+
+    useEffect(() => {
+        const fetchRaids = async () => {
+            try {
+                const data = await getAllRaids(token);
+                setRaids(data);
+                if (data && data.length > 0) {
+                    setSelectedRaid(data[0]);
+                }
+            } catch (error) {
+                console.error('Error fetching raids:', error);
+            }
+        };
+        fetchRaids();
+    }, [token]);
+
+    function updateRaidSelection(context) {
+        const raid = JSON.parse(context.target.value);
+        setSelectedRaid(raid);
+    }
+
+    function deleteRaid() {
+        if (!selectedRaid) {
+            alert("No raid selected.");
+            return;
+        }
+
+        if (window.confirm("Are you sure you want to delete the raid: " + selectedRaid.name + "?") === false) {
+            return;
+        }
+
+        fetch(process.env.REACT_APP_BACKEND_URL + "/api/raid/" + selectedRaid.id, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': token,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.status === 204) {
+                alert("Raid deleted successfully!");
+            } else if (response.status === 404) {
+                alert("Raid not found.");
+            } else {
+                alert("Failed to delete raid.");
+            }
+        })
+        .catch(error => console.error('Error deleting raid:', error));
+    }
+
+    return (
+        <div className="border border-secondary border-2 rounded p-3">
+            <h2 className="mb-3">Delete Raid:</h2>
+            <form action={deleteRaid}>
+                <div className="form-group d-flex flex-column gap-2">
+                    <div className="row align-items-center">
+                        <label className="col-sm-4 text-end textSmall mb-0">Raid:</label>
+                        <div className="col-sm-8">
+                            <select name="raidInput" className="form-select textMedium" onChange={updateRaidSelection}>
+                                {raids.map(raid => (
+                                    <option key={raid.id} value={JSON.stringify(raid)}>
+                                        {raid.id}: {raid.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <div className="d-flex align-items-center justify-content-center mt-3">
+                        <button type="submit" className="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    );
+}
+
 
 export async function getAllRaidrewards(token)
 {

@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import {GetPlayerForIdForm, GetPlayerForNameForm, AddPlayerForm, EditPlayerForm, DeletePlayerForm, getAllPlayers, SelectPlayer, ListAllPlayers}
+import {GetPlayerForIdForm, GetPlayerForNameForm, AddPlayerForm, EditPlayerForm, DeletePlayerForm, getAllPlayers, ListAllPlayers}
 from '../Services/PlayerService.js'
 
 export default function Players({ token }) {

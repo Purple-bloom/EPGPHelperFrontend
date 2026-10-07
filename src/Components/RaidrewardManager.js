@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import {ListAllRaidrewards, CreateRaidrewardForm, UpdateRaidrewardForm, DeleteRaidrewardForm} from '../Services/RaidrewardService.js'
+import {ListAllRaidrewards, CreateRaidrewardForm, UpdateRaidrewardForm, DeleteRaidrewardForm, DeleteRaidForm, CreateRaidForm} from '../Services/RaidrewardService.js'
 
 export default function RaidRewards({ token }) {
     return (
@@ -12,6 +12,8 @@ export default function RaidRewards({ token }) {
                         <DeleteRaidrewardForm token={token} />
                     </div>
                     <div className = "col">
+                        <CreateRaidForm token={token} />
+                        <DeleteRaidForm token={token} />
                         <ListAllRaidrewards token={token} />
                     </div>
                 </div>

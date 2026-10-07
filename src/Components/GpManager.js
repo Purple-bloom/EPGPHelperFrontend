@@ -11,9 +11,7 @@ export default function Gp({ token }) {
                     <div className = "col-8">
                         <ListAllPlayers token={token} />
                     </div>
-                    <div className = "col-4">
-                        <GpAwardForm token={token} />
-                    </div>
+
                 </div>
             </div>
             );

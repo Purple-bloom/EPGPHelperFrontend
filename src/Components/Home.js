@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
 import logo from '../logo.svg';
 import lootIcon from '../img/LootIcon.png'
-import {GetPlayerForIdForm, GetPlayerForNameForm, AddPlayerForm, getAllPlayers, SelectPlayer} from '../Services/PlayerService.js'
+import {GetPlayerForIdForm, GetPlayerForNameForm, AddPlayerForm, getAllPlayers} from '../Services/PlayerService.js'
 import {AddCharacterForm} from '../Services/CharacterService.js'
 import { useEffect, useState } from "react"
 import { Routes, Route } from "react-router-dom";

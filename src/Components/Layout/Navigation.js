@@ -47,9 +47,9 @@ export default function Navigation({ token }) {
                             <>
                                 <li className="nav-item"><Link className="nav-link" to="/players" onClick={closeNavbar}>Players</Link></li>
                                 <li className="nav-item"><Link className="nav-link" to="/characters" onClick={closeNavbar}>Characters</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/raidrewards" onClick={closeNavbar}>Rewards</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/gp" onClick={closeNavbar}>GP</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/ep" onClick={closeNavbar}>EP</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/raidrewards" onClick={closeNavbar}>Raids & Rewards</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/addon" onClick={closeNavbar}>Addon</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/epgp" onClick={closeNavbar}>EPGP</Link></li>
                                 <li className="nav-item"><Link className="nav-link" to="/log" onClick={closeNavbar}>Logs</Link></li>
                                 <li className="nav-item"><Link className="nav-link" to="/settings" onClick={closeNavbar}>Settings</Link></li>
                                 <button className="btn btn-outline-danger ms-3" onClick={() => {handleLogout();closeNavbar();}}>Logout</button>
