@@ -64,10 +64,6 @@ export function AddonExportForm({ token }) {
     }
   };
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(exportData);
-  };
-
   return (
     <div className="border border-secondary border-2 rounded p-3">
       <h2 className="mb-3">Get Addon Import:</h2>
@@ -96,15 +92,6 @@ export function AddonExportForm({ token }) {
             value={exportData}
             readOnly
           />
-          <div className="d-flex justify-content-center">
-            <button
-              type="button"
-              className="btn btn-secondary btn-sm"
-              onClick={copyToClipboard}
-            >
-              Copy to Clipboard
-            </button>
-          </div>
         </div>
       )}
     </div>
